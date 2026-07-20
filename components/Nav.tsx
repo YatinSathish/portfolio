@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { navLinks, site } from "@/data/content";
+import { navLinks } from "@/data/content";
 import ThemeToggle from "./ThemeToggle";
 import { EASE } from "./motion/primitives";
 
@@ -154,12 +154,6 @@ export default function Nav() {
                   {l.label}
                 </Link>
               ))}
-              <a
-                href={`mailto:${site.email}`}
-                className="py-3 font-mono text-xs text-mute"
-              >
-                {site.email}
-              </a>
             </div>
           </motion.div>
         )}

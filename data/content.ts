@@ -5,6 +5,13 @@ export const site = {
   firstName: "Yatindran",
   role: "Software Engineer",
   eyebrow: "SOFTWARE ENGINEER",
+  roles: [
+    "SOFTWARE ENGINEER",
+    "MOBILE APP DEVELOPER",
+    "AI ENGINEER",
+    "WEB DEVELOPER",
+    "DATA ANALYST",
+  ],
   pitch: "Full-stack engineer shipping mobile, web & AI products end to end.",
   location: "Based in Sydney · open to roles Australia-wide",
   seeking: "Open to junior–mid roles in software, data engineering & AI",
