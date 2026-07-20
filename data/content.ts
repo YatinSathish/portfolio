@@ -13,6 +13,8 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/yatindran-sathishkumar",
   github: "https://github.com/yatindran",
   resumePdf: "/resume.pdf",
+  // TODO: replace with the real repo URL once pushed to GitHub
+  repo: "https://github.com/yatindran/pf2",
 };
 
 export type Experience = {
@@ -139,9 +141,7 @@ export const education = [
 ];
 
 export const navLinks = [
-  { label: "Experience", href: "/#experience" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Skills", href: "/#skills" },
-  { label: "Education", href: "/#education" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Work", href: "/#experience", sections: ["experience", "projects"] },
+  { label: "Stack", href: "/#skills", sections: ["skills", "education"] },
+  { label: "Contact", href: "/#contact", sections: ["contact"] },
 ];

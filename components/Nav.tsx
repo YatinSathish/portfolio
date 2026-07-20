@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navLinks, site } from "@/data/content";
@@ -8,6 +9,7 @@ import ThemeToggle from "./ThemeToggle";
 import { EASE } from "./motion/primitives";
 
 export default function Nav() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,22 +22,37 @@ export default function Nav() {
   }, []);
 
   useEffect(() => {
+    if (pathname !== "/") return;
     const ids = ["experience", "projects", "skills", "education", "contact"];
     const sections = ids
       .map((id) => document.getElementById(id))
       .filter(Boolean) as HTMLElement[];
     if (!sections.length) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        }
-      },
-      { rootMargin: "-40% 0px -55% 0px" }
-    );
-    sections.forEach((s) => observer.observe(s));
-    return () => observer.disconnect();
-  }, []);
+
+    const onScroll = () => {
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 24;
+      if (atBottom) {
+        setActive("contact");
+        return;
+      }
+      const line = window.innerHeight * 0.4;
+      let current = "";
+      for (const s of sections) {
+        if (s.getBoundingClientRect().top <= line) current = s.id;
+      }
+      setActive(current);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [pathname]);
 
   return (
     <div className="pointer-events-none fixed inset-x-0 top-4 z-50 flex flex-col items-center px-4">
@@ -56,8 +73,7 @@ export default function Nav() {
 
         <div className="hidden items-center md:flex">
           {navLinks.map((l) => {
-            const id = l.href.split("#")[1];
-            const isActive = active === id;
+            const isActive = pathname === "/" && l.sections.includes(active);
             return (
               <Link
                 key={l.href}
@@ -87,9 +103,9 @@ export default function Nav() {
           <ThemeToggle />
           <Link
             href="/resume"
-            className="hidden rounded-full border border-line px-4 py-1.5 text-sm text-ink transition-colors duration-300 hover:border-acc2 hover:text-acc2 sm:block"
+            className="jewel hidden rounded-full px-4 py-1.5 text-sm font-medium sm:block"
           >
-            Resume
+            <span className="jewel-label">Resume</span>
           </Link>
           <button
             onClick={() => setMenuOpen((v) => !v)}

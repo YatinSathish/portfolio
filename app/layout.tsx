@@ -5,6 +5,7 @@ import Aurora from "@/components/backgrounds/Aurora";
 import DustMotes from "@/components/backgrounds/DustMotes";
 import MagneticGrid from "@/components/backgrounds/MagneticGrid";
 import Nav from "@/components/Nav";
+import ScrollTop from "@/components/ScrollTop";
 
 const space = Space_Grotesk({
   variable: "--font-space",
@@ -67,6 +68,7 @@ export default function RootLayout({
         <div className="grain" aria-hidden="true" />
         <Nav />
         {children}
+        <ScrollTop />
       </body>
     </html>
   );
