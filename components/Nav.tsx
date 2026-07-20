@@ -59,16 +59,26 @@ export default function Nav() {
       <nav
         className={`glass-nav pointer-events-auto flex items-center rounded-full transition-all duration-500 ${
           scrolled
-            ? "gap-0.5 py-1.5 pl-4 pr-1.5 shadow-[var(--navglass-shadow)]"
-            : "gap-1.5 py-2.5 pl-5 pr-2.5 shadow-[var(--navglass-inner)]"
+            ? "gap-0.5 py-1.5 pl-4 pr-1.5 shadow-[var(--navglass-shadow)] sm:gap-1 sm:py-2 sm:pl-5 sm:pr-2"
+            : "gap-1.5 py-2.5 pl-5 pr-2.5 shadow-[var(--navglass-inner)] sm:gap-2 sm:py-3.5 sm:pl-6 sm:pr-3"
         }`}
       >
         <Link
           href="/"
-          className="mr-2 font-display text-lg font-semibold tracking-tight"
+          className="group mr-2 font-display text-lg font-semibold tracking-tight sm:text-xl"
         >
-          <span className="text-grad">YS</span>
-          <span className="text-mute">.</span>
+          <span className="relative inline-block">
+            <span className="text-ink transition-opacity duration-300 group-hover:opacity-0">
+              yatindran
+            </span>
+            <span
+              aria-hidden="true"
+              className="text-grad absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            >
+              yatindran
+            </span>
+          </span>
+          <span className="text-grad">.</span>
         </Link>
 
         <div className="hidden items-center md:flex">
@@ -78,7 +88,7 @@ export default function Nav() {
               <Link
                 key={l.href}
                 href={l.href}
-                className={`relative rounded-full px-3.5 py-1.5 text-sm transition-colors duration-300 ${
+                className={`relative rounded-full px-4 py-2 text-[15px] transition-colors duration-300 ${
                   isActive ? "text-acc1" : "text-mute hover:text-ink"
                 }`}
               >
@@ -103,7 +113,7 @@ export default function Nav() {
           <ThemeToggle />
           <Link
             href="/resume"
-            className="jewel hidden rounded-full px-4 py-1.5 text-sm font-medium sm:block"
+            className="jewel hidden rounded-full px-5 py-2 text-[15px] font-medium sm:block"
           >
             <span className="jewel-label">Resume</span>
           </Link>
