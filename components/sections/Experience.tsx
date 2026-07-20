@@ -36,7 +36,7 @@ export default function Experience() {
                   aria-hidden="true"
                   className="absolute -left-[2.45rem] top-1.5 h-3 w-3 rounded-full border-2 border-acc1 bg-bg transition-shadow duration-300 group-hover:shadow-[0_0_14px_var(--glow)] sm:-left-[3.45rem]"
                 />
-                <div className="rounded-2xl border border-line bg-card p-6 backdrop-blur-sm transition-all duration-500 hover:border-acc2/40 hover:shadow-[0_0_40px_-12px_var(--glow)] sm:p-8">
+                <div className="glass rounded-2xl p-6 transition-all duration-500 hover:border-acc2/40 sm:p-8">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
                     <h3 className="font-display text-xl font-semibold sm:text-2xl">
                       {job.company}

@@ -10,7 +10,7 @@ export default function Skills() {
           <Stagger
             key={group.group}
             delay={gi * 0.08}
-            className="rounded-2xl border border-line bg-card p-6 backdrop-blur-sm transition-colors duration-500 hover:border-acc2/30 sm:p-7"
+            className="glass rounded-2xl p-6 transition-colors duration-500 hover:border-acc2/30 sm:p-7"
           >
             <StaggerItem>
               <p className="font-mono text-xs tracking-[0.2em] text-acc2/80">

@@ -51,7 +51,7 @@ export default function SpotlightCard({
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       style={tilt ? { rotateX: rx, rotateY: ry, transformPerspective: 1100 } : undefined}
-      className={`group relative overflow-hidden rounded-2xl border border-line bg-card backdrop-blur-sm transition-colors duration-500 hover:border-acc2/40 ${className ?? ""}`}
+      className={`glass group relative overflow-hidden rounded-2xl transition-colors duration-500 hover:border-acc2/40 ${className ?? ""}`}
     >
       <div
         aria-hidden="true"

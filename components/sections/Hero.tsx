@@ -97,7 +97,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.95, ease: EASE }}
-          className="mt-6 flex items-center gap-2.5 rounded-full border border-line bg-card px-4 py-2 backdrop-blur-sm"
+          className="glass mt-6 flex items-center gap-2.5 rounded-full px-4 py-2"
         >
           <span className="pulse-dot h-2 w-2 rounded-full bg-acc1" />
           <span className="text-xs text-ink/85 sm:text-sm">{site.seeking}</span>

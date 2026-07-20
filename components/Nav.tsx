@@ -1,29 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navLinks, site } from "@/data/content";
 import ThemeToggle from "./ThemeToggle";
 import { EASE } from "./motion/primitives";
 
 export default function Nav() {
-  const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
-  const lastY = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 24);
-      setHidden(y > 140 && y > lastY.current && !menuOpen);
-      lastY.current = y;
-    };
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [menuOpen]);
+  }, []);
 
   useEffect(() => {
     const ids = ["experience", "projects", "skills", "education", "contact"];
@@ -44,25 +38,23 @@ export default function Nav() {
   }, []);
 
   return (
-    <motion.nav
-      animate={{ y: hidden ? "-110%" : "0%" }}
-      transition={{ duration: 0.45, ease: EASE }}
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
-        scrolled
-          ? "border-b border-line bg-bg/70 backdrop-blur-xl"
-          : "border-b border-transparent bg-transparent"
-      }`}
-    >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
+    <div className="pointer-events-none fixed inset-x-0 top-4 z-50 flex flex-col items-center px-4">
+      <nav
+        className={`glass-nav pointer-events-auto flex items-center rounded-full transition-all duration-500 ${
+          scrolled
+            ? "gap-0.5 py-1.5 pl-4 pr-1.5 shadow-[var(--navglass-shadow)]"
+            : "gap-1.5 py-2.5 pl-5 pr-2.5 shadow-[var(--navglass-inner)]"
+        }`}
+      >
         <Link
           href="/"
-          className="font-display text-lg font-semibold tracking-tight"
+          className="mr-2 font-display text-lg font-semibold tracking-tight"
         >
           <span className="text-grad">YS</span>
           <span className="text-mute">.</span>
         </Link>
 
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center md:flex">
           {navLinks.map((l) => {
             const id = l.href.split("#")[1];
             const isActive = active === id;
@@ -70,32 +62,39 @@ export default function Nav() {
               <Link
                 key={l.href}
                 href={l.href}
-                className={`group relative rounded-full px-3.5 py-2 text-sm transition-colors duration-300 ${
+                className={`relative rounded-full px-3.5 py-1.5 text-sm transition-colors duration-300 ${
                   isActive ? "text-acc1" : "text-mute hover:text-ink"
                 }`}
               >
-                {l.label}
-                <span
-                  className={`absolute inset-x-3.5 -bottom-0.5 h-px origin-left bg-gradient-to-r from-acc1 to-acc3 transition-transform duration-300 ${
-                    isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                  }`}
-                />
+                {isActive && (
+                  <motion.span
+                    layoutId="nav-chip"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                    className="absolute inset-0 rounded-full border border-acc1/25"
+                    style={{
+                      background:
+                        "color-mix(in srgb, var(--acc1) 12%, transparent)",
+                    }}
+                  />
+                )}
+                <span className="relative z-10">{l.label}</span>
               </Link>
             );
           })}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="ml-1 flex items-center gap-1.5">
           <ThemeToggle />
           <Link
             href="/resume"
-            className="hidden rounded-full border border-line px-4 py-2 text-sm text-ink transition-all duration-300 hover:border-acc2 hover:text-acc2 sm:block"
+            className="hidden rounded-full border border-line px-4 py-1.5 text-sm text-ink transition-colors duration-300 hover:border-acc2 hover:text-acc2 sm:block"
           >
             Resume
           </Link>
           <button
             onClick={() => setMenuOpen((v) => !v)}
             aria-label="Toggle menu"
+            aria-expanded={menuOpen}
             className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-mute md:hidden"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -107,16 +106,16 @@ export default function Nav() {
             </svg>
           </button>
         </div>
-      </div>
+      </nav>
 
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.35, ease: EASE }}
-            className="overflow-hidden border-t border-line bg-bg/90 backdrop-blur-xl md:hidden"
+            initial={{ opacity: 0, y: -10, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.97 }}
+            transition={{ duration: 0.3, ease: EASE }}
+            className="glass-nav pointer-events-auto mt-2 w-full max-w-sm rounded-3xl shadow-[var(--navglass-shadow)] md:hidden"
           >
             <div className="flex flex-col px-5 py-3">
               {[...navLinks, { label: "Resume", href: "/resume" }].map((l) => (
@@ -139,6 +138,6 @@ export default function Nav() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </div>
   );
 }
