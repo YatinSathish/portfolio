@@ -26,13 +26,13 @@ const jbmono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Yatindran Sathishkumar — Software Engineer",
-    template: "%s · Yatindran Sathishkumar",
+    default: "Yatindran Sathishkumar | Software Engineer",
+    template: "Yatindran Sathishkumar | %s",
   },
   description:
     "Full-stack Software Development Engineer based in Sydney, open to roles Australia-wide. Junior–mid roles in software, data engineering & AI.",
   openGraph: {
-    title: "Yatindran Sathishkumar — Software Engineer",
+    title: "Yatindran Sathishkumar | Software Engineer",
     description:
       "Full-stack Software Development Engineer based in Sydney, open to roles Australia-wide.",
     type: "website",

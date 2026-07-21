@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { education, experience, projects, site, skills } from "@/data/content";
 import { Reveal } from "@/components/motion/primitives";
+import BackOrb from "@/components/BackOrb";
 
 export const metadata: Metadata = {
   title: "Resume",
@@ -11,9 +12,12 @@ export default function ResumePage() {
     <main className="mx-auto max-w-3xl px-5 pb-24 pt-28 sm:px-8">
       <Reveal>
         <div className="no-print mb-8 flex flex-wrap items-center justify-between gap-4">
-          <h1 className="font-display text-3xl font-semibold tracking-tight">
-            <span className="text-grad">Resume</span>
-          </h1>
+          <div className="flex items-center gap-4">
+            <BackOrb />
+            <h1 className="font-display text-3xl font-semibold tracking-tight">
+              <span className="text-grad">Resume</span>
+            </h1>
+          </div>
           <a
             href={site.resumePdf}
             download="Yatindran_Sathishkumar_Resume.pdf"

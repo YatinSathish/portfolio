@@ -208,6 +208,16 @@ html.light {
     mask-composite: exclude;
     pointer-events: none;
   }
+  html:not(.light) .glass-nav-smoked {
+    --navglass-bg: linear-gradient(
+      135deg,
+      rgba(52, 211, 153, 0.1),
+      rgba(10, 16, 13, 0.82) 45%,
+      rgba(34, 211, 238, 0.08)
+    );
+    --navglass-blur: blur(28px) saturate(1.6) brightness(0.65);
+  }
+
   .glass-nav::after {
     content: "";
     position: absolute;

@@ -17,11 +17,11 @@ export const site = {
   seeking: "Open to junior–mid roles in software, data engineering & AI",
   email: "yatinsat@gmail.com",
   // TODO: replace with your real profile URLs
-  linkedin: "https://www.linkedin.com/in/yatindran-sathishkumar",
-  github: "https://github.com/yatindran",
+  linkedin: "https://www.linkedin.com/in/yatindran-sathishkumar-123513249",
+  github: "https://github.com/YatinSathish",
   resumePdf: "/resume.pdf",
   // TODO: replace with the real repo URL once pushed to GitHub
-  repo: "https://github.com/yatindran/pf2",
+  repo: "https://github.com/YatinSathish",
 };
 
 export type Experience = {
@@ -43,7 +43,15 @@ export const experience: Experience[] = [
       "Built dashboards, calendar views and invoice tracking UI across REST APIs and mobile.",
       "Deployed to AWS EC2 with CI/CD via GitHub Actions; shipped iOS & Android via Expo EAS.",
     ],
-    tech: ["React Native", "TypeScript", "Node.js", "MongoDB Atlas", "AWS EC2", "GitHub Actions", "Expo EAS"],
+    tech: [
+      "React Native",
+      "TypeScript",
+      "Node.js",
+      "MongoDB Atlas",
+      "AWS EC2",
+      "GitHub Actions",
+      "Expo EAS",
+    ],
   },
   {
     company: "Freelance Web Developer",
@@ -83,7 +91,14 @@ export const projects: Project[] = [
     grant: "Funded by the NSW Government MVP innovation grant",
     description:
       "A trust & reputation platform for the Australian construction industry. Tradespeople and businesses vouch for each other, verified against the Australian Business Register, with role-based invoice approval keeping payments accountable end to end.",
-    tech: ["React Native", "TypeScript", "Node.js", "MongoDB Atlas", "AWS EC2", "Expo EAS"],
+    tech: [
+      "React Native",
+      "TypeScript",
+      "Node.js",
+      "MongoDB Atlas",
+      "AWS EC2",
+      "Expo EAS",
+    ],
     link: { label: "vouchpay.app", href: "https://vouchpay.app" },
     stores: true,
     image: null, // TODO: drop screenshot into /public and set e.g. "/vouchpay.png"
@@ -95,7 +110,7 @@ export const projects: Project[] = [
     description:
       "RAG pipeline ingesting Slack data with LLM-assisted content classification and a citation-gated REST API that keeps internal data out of customer-facing responses.",
     tech: ["FastAPI", "ChromaDB", "Gemini"],
-    github: "https://github.com/yatindran", // TODO: repo link
+    github: "https://github.com/YatinSathish", // TODO: repo link
   },
   {
     id: "local-chatbot",
@@ -104,29 +119,58 @@ export const projects: Project[] = [
     description:
       "Local RAG pipeline for querying PDFs in plain English — hybrid semantic + BM25 retrieval with zero external API dependency.",
     tech: ["LangChain", "ChromaDB", "Ollama"],
-    github: "https://github.com/yatindran", // TODO: repo link
+    github: "https://github.com/YatinSathish", // TODO: repo link
   },
   {
     id: "data-pipeline",
     title: "Data Pipeline Project",
     description: "End-to-end data pipeline project — details coming soon.", // TODO: one-liner
     tech: ["Python", "Pandas", "SQL"],
-    github: "https://github.com/yatindran", // TODO: repo link
+    github: "https://github.com/YatinSathish", // TODO: repo link
   },
 ];
 
 export const skills: { group: string; items: string[] }[] = [
   {
     group: "Frontend & Mobile",
-    items: ["React Native", "React", "Next.js", "TypeScript", "JavaScript", "HTML/CSS", "Tailwind CSS", "Expo EAS", "WordPress", "Elementor", "Figma"],
+    items: [
+      "React Native",
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "HTML/CSS",
+      "Tailwind CSS",
+      "Expo EAS",
+      "WordPress",
+      "Elementor",
+      "Figma",
+    ],
   },
   {
     group: "Backend & APIs",
-    items: ["Node.js", "Express", "Python", "FastAPI", "Flask-RESTx", "SQL", "MongoDB Atlas", "SQLite", "Atlassian Forge SDK"],
+    items: [
+      "Node.js",
+      "Express",
+      "Python",
+      "FastAPI",
+      "Flask-RESTx",
+      "SQL",
+      "MongoDB Atlas",
+      "SQLite",
+      "Atlassian Forge SDK",
+    ],
   },
   {
     group: "AI & Data",
-    items: ["LangChain", "ChromaDB", "Gemini", "Ollama", "Pandas", "JupyterLab"],
+    items: [
+      "LangChain",
+      "ChromaDB",
+      "Gemini",
+      "Ollama",
+      "Pandas",
+      "JupyterLab",
+    ],
   },
   {
     group: "Cloud & Tools",

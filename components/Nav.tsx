@@ -57,7 +57,9 @@ export default function Nav() {
   return (
     <div className="pointer-events-none fixed inset-x-0 top-4 z-50 flex flex-col items-center px-4">
       <nav
-        className={`glass-nav pointer-events-auto flex items-center rounded-full transition-all duration-500 ${
+        className={`glass-nav ${
+          pathname === "/resume" ? "glass-nav-smoked " : ""
+        }pointer-events-auto flex items-center rounded-full transition-all duration-500 ${
           scrolled
             ? "gap-0.5 py-1.5 pl-4 pr-1.5 shadow-[var(--navglass-shadow)] sm:gap-1 sm:py-2 sm:pl-5 sm:pr-2"
             : "gap-1.5 py-2.5 pl-5 pr-2.5 shadow-[var(--navglass-inner)] sm:gap-2 sm:py-3.5 sm:pl-6 sm:pr-3"
@@ -141,7 +143,9 @@ export default function Nav() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.97 }}
             transition={{ duration: 0.3, ease: EASE }}
-            className="glass-nav pointer-events-auto mt-2 w-full max-w-sm rounded-3xl shadow-[var(--navglass-shadow)] md:hidden"
+            className={`glass-nav ${
+              pathname === "/resume" ? "glass-nav-smoked " : ""
+            }pointer-events-auto mt-2 w-full max-w-sm rounded-3xl shadow-[var(--navglass-shadow)] md:hidden`}
           >
             <div className="flex flex-col px-5 py-3">
               {[...navLinks, { label: "Resume", href: "/resume" }].map((l) => (
