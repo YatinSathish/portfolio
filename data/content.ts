@@ -108,25 +108,27 @@ export const projects: Project[] = [
     title: "Customer-Safe Internal Knowledge RAG System",
     date: "Jan 2026",
     description:
-      "RAG pipeline ingesting Slack data with LLM-assisted content classification and a citation-gated REST API that keeps internal data out of customer-facing responses.",
-    tech: ["FastAPI", "ChromaDB", "Gemini"],
-    github: "https://github.com/YatinSathish", // TODO: repo link
+      "An internal knowledge chatbot built on a RAG pipeline that ingests Slack data, classifies content using an LLM, and serves grounded answers through a citation-gated REST API.",
+    tech: ["Python", "FastAPI", "ChromaDB", "Gemini 2.5 Flash"],
+    github:
+      "https://github.com/YatinSathish/Internal-Knowledge-to-Customer-Safe-AI-Assistant",
   },
   {
     id: "local-chatbot",
     title: "Local AI Chatbot for Document Assistance",
     date: "Dec 2025",
     description:
-      "Local RAG pipeline for querying PDFs in plain English — hybrid semantic + BM25 retrieval with zero external API dependency.",
-    tech: ["LangChain", "ChromaDB", "Ollama"],
-    github: "https://github.com/YatinSathish", // TODO: repo link
+      "A fully offline PDF chatbot powered by a local RAG pipeline with hybrid semantic and BM25 retrieval. No API keys, no cloud, no data leaving your machine.",
+    tech: ["Python", "Ollama", "Llama 3.2", "ChromaDB", "BM25"],
+    github: "https://github.com/YatinSathish/PDF-Reader-Chatbot",
   },
   {
     id: "data-pipeline",
-    title: "Data Pipeline Project",
-    description: "End-to-end data pipeline project — details coming soon.", // TODO: one-liner
-    tech: ["Python", "Pandas", "SQL"],
-    github: "https://github.com/YatinSathish", // TODO: repo link
+    title: "NSW Fuel Price Data Analysis",
+    description:
+      "Data analysis of 60,000+ NSW FuelCheck records, comparing fuel prices across urban and rural regions and independent vs franchised stations using Python and Pandas.",
+    tech: ["Python", "Pandas", "Matplotlib", "Jupyter"],
+    github: "https://github.com/YatinSathish/NSW-Fuel-Data-Analysis",
   },
 ];
 

@@ -82,7 +82,7 @@ export default function SpotlightCard({
           />
         </svg>
       )}
-      <div className="relative">{children}</div>
+      <div className="relative h-full">{children}</div>
     </motion.div>
   );
 }
