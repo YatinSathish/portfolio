@@ -1,33 +1,78 @@
-import { skills } from "@/data/content";
-import { Stagger, StaggerItem } from "../motion/primitives";
+import { whatIDo } from "@/data/content";
+import { Reveal } from "../motion/primitives";
 import Section from "./Section";
+import SpotlightCard from "../SpotlightCard";
+
+const icons = [
+  // Mobile & full stack — smartphone
+  <svg key="mobile" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <rect x="7" y="2" width="10" height="20" rx="2.5" />
+    <path d="M11 18h2" />
+  </svg>,
+  // AI & RAG — sparkle
+  <svg key="ai" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z" />
+    <path d="M19 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z" />
+  </svg>,
+  // Cloud & CI/CD — cloud
+  <svg key="cloud" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+  </svg>,
+  // Data — bar chart
+  <svg key="data" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M6 20v-8M12 20V5M18 20v-5" />
+  </svg>,
+];
+
+const hues: [string, string, string][] = [
+  ["var(--acc1)", "var(--acc2)", "var(--acc1)"],
+  ["var(--acc1)", "var(--acc3)", "var(--acc2)"],
+  ["var(--acc2)", "var(--acc3)", "var(--acc2)"],
+  ["var(--acc3)", "var(--acc2)", "var(--acc3)"],
+];
 
 export default function Skills() {
   return (
-    <Section id="skills" number="03" title="Skills">
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        {skills.map((group, gi) => (
-          <Stagger
-            key={group.group}
-            delay={gi * 0.08}
-            className="glass rounded-2xl p-6 transition-colors duration-500 hover:border-acc2/30 sm:p-7"
-          >
-            <StaggerItem>
-              <p className="font-mono text-xs tracking-[0.2em] text-acc2/80">
-                {group.group.toUpperCase()}
-              </p>
-            </StaggerItem>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {group.items.map((item) => (
-                <StaggerItem key={item} y={10}>
-                  <span className="block cursor-default rounded-full border border-line bg-card px-3.5 py-1.5 text-[13px] text-ink/85 transition-all duration-300 hover:-translate-y-0.5 hover:border-acc1/50 hover:text-acc1">
-                    {item}
-                  </span>
-                </StaggerItem>
-              ))}
-            </div>
-          </Stagger>
-        ))}
+    <Section id="skills" number="03" title="What I do">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+        {whatIDo.map((cap, i) => {
+          const [from, to, iconColor] = hues[i % hues.length];
+          return (
+            <Reveal key={cap.title} delay={(i % 2) * 0.1} className="h-full">
+              <SpotlightCard className="h-full">
+                <div className="flex h-full flex-col p-6 sm:p-8">
+                  <div
+                    className="flex h-10 w-10 items-center justify-center rounded-xl border border-line"
+                    style={{
+                      background: `linear-gradient(135deg, color-mix(in srgb, ${from} 20%, transparent), color-mix(in srgb, ${to} 11%, transparent))`,
+                      color: iconColor,
+                      boxShadow: `inset 0 0 10px color-mix(in srgb, ${from} 10%, transparent)`,
+                    }}
+                    aria-hidden="true"
+                  >
+                    {icons[i % icons.length]}
+                  </div>
+                  <h3 className="mt-4 font-display text-lg font-semibold leading-snug sm:text-xl">
+                    {cap.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-mute">
+                    {cap.body}
+                  </p>
+                  <div className="mt-auto flex flex-wrap gap-2 pt-6">
+                    {cap.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-full border border-line px-3 py-1 font-mono text-[11px] text-mute transition-colors duration-300 hover:border-acc1/50 hover:text-acc1"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </SpotlightCard>
+            </Reveal>
+          );
+        })}
       </div>
     </Section>
   );

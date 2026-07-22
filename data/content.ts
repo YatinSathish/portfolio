@@ -132,6 +132,36 @@ export const projects: Project[] = [
   },
 ];
 
+export type Capability = {
+  title: string;
+  body: string;
+  tech: string[];
+};
+
+export const whatIDo: Capability[] = [
+  {
+    title: "Mobile and Full Stack Development",
+    body: "I build and ship mobile and web applications end to end, from the first screen through to production deployment on iOS and Android. I work across React Native, TypeScript, Node.js, and AWS, and I am comfortable moving between frontend and backend depending on what the product needs.",
+    tech: ["React Native", "TypeScript", "Node.js", "Next.js", "AWS EC2"],
+  },
+  {
+    title: "AI and RAG Systems",
+    body: "I build practical AI systems that go beyond basic API calls, including RAG pipelines, local LLM deployments, and citation-gated knowledge systems. I use Claude Code daily and think carefully about how AI outputs should be validated before they reach real users.",
+    tech: ["LangChain", "ChromaDB", "FastAPI", "Ollama", "Gemini"],
+  },
+  {
+    title: "Cloud Deployment and CI/CD",
+    body: "I deploy and maintain production backends on AWS, configure Nginx and PM2, and set up automated pipelines so releases are consistent and reliable. I have shipped to both the App Store and Google Play through Expo EAS.",
+    tech: ["AWS EC2", "GitHub Actions", "Nginx", "Expo EAS", "CI/CD"],
+  },
+  {
+    title: "Data Engineering and Analysis",
+    body: "I build data pipelines that clean, transform, and make sense of raw datasets. I have worked with Python and Pandas across ETL pipelines, SQL querying, and exploratory data analysis, turning messy data into something useful.",
+    tech: ["Python", "Pandas", "SQL", "SQLite", "Matplotlib"],
+  },
+];
+
+// Dense grouped list used by the resume page document
 export const skills: { group: string; items: string[] }[] = [
   {
     group: "Frontend & Mobile",
