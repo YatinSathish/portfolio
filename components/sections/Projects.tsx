@@ -3,6 +3,7 @@ import { Reveal } from "../motion/primitives";
 import Section from "./Section";
 import SpotlightCard from "../SpotlightCard";
 import PhoneMock from "../PhoneMock";
+import Tag from "../Tag";
 
 function ExternalIcon() {
   return (
@@ -29,7 +30,7 @@ export default function Projects() {
       <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
         <Reveal className="md:col-span-3" y={36}>
           <div id="vouchpay" className="scroll-mt-24">
-            <SpotlightCard tilt={false} beamDelay={0}>
+            <SpotlightCard tiltStrength={0.6} beamDelay={0}>
               <div className="grid grid-cols-1 gap-8 p-7 sm:p-10 lg:grid-cols-[1.4fr_1fr]">
                 <div className="flex flex-col justify-center">
                   <div className="flex flex-wrap items-center gap-3">
@@ -51,9 +52,9 @@ export default function Projects() {
                   </p>
                   <div className="mt-6 flex flex-wrap gap-2">
                     {flagship.tech.map((t) => (
-                      <span key={t} className="rounded-full border border-line px-3 py-1 font-mono text-[11px] text-mute">
+                      <Tag key={t} hue="var(--acc2)" className="px-3 py-1 text-[11px]">
                         {t}
-                      </span>
+                      </Tag>
                     ))}
                   </div>
                   <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -65,12 +66,12 @@ export default function Projects() {
                     >
                       {flagship.link!.label} <ExternalIcon />
                     </a>
-                    <span className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2.5 font-mono text-[11px] text-mute">
+                    <Tag hue="var(--acc2)" className="inline-flex items-center gap-2 px-4 py-2.5 text-[11px]">
                       iOS · App Store
-                    </span>
-                    <span className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2.5 font-mono text-[11px] text-mute">
+                    </Tag>
+                    <Tag hue="var(--acc2)" className="inline-flex items-center gap-2 px-4 py-2.5 text-[11px]">
                       Android · Google Play
-                    </span>
+                    </Tag>
                   </div>
                 </div>
                 <div className="flex items-center justify-center py-2">
@@ -98,9 +99,9 @@ export default function Projects() {
                 </p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {p.tech.map((t) => (
-                    <span key={t} className="rounded-full border border-line px-2.5 py-0.5 font-mono text-[10px] text-mute">
+                    <Tag key={t} className="px-2.5 py-0.5 text-[10px]">
                       {t}
-                    </span>
+                    </Tag>
                   ))}
                 </div>
                 {p.github && (

@@ -8,22 +8,24 @@ export default function SpotlightCard({
   className,
   beamDelay,
   tilt = true,
+  tiltStrength = 3.5,
 }: {
   children: ReactNode;
   className?: string;
   beamDelay?: number;
   tilt?: boolean;
+  tiltStrength?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [spot, setSpot] = useState({ x: -400, y: -400 });
 
   const mx = useMotionValue(0.5);
   const my = useMotionValue(0.5);
-  const rx = useSpring(useTransform(my, [0, 1], [3.5, -3.5]), {
+  const rx = useSpring(useTransform(my, [0, 1], [tiltStrength, -tiltStrength]), {
     stiffness: 140,
     damping: 16,
   });
-  const ry = useSpring(useTransform(mx, [0, 1], [-3.5, 3.5]), {
+  const ry = useSpring(useTransform(mx, [0, 1], [-tiltStrength, tiltStrength]), {
     stiffness: 140,
     damping: 16,
   });

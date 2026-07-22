@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { navLinks } from "@/data/content";
+import { navLinks, site } from "@/data/content";
 import ThemeToggle from "./ThemeToggle";
 import { EASE } from "./motion/primitives";
 
@@ -117,7 +117,7 @@ export default function Nav() {
             href="/resume"
             className="jewel hidden rounded-full px-5 py-2 text-[15px] font-medium sm:block"
           >
-            <span className="jewel-label">Resume</span>
+            <span className="jewel-label">{site.resumeLabel}</span>
           </Link>
           <button
             onClick={() => setMenuOpen((v) => !v)}
@@ -148,7 +148,7 @@ export default function Nav() {
             }pointer-events-auto mt-2 w-full max-w-sm rounded-3xl shadow-[var(--navglass-shadow)] md:hidden`}
           >
             <div className="flex flex-col px-5 py-3">
-              {[...navLinks, { label: "Resume", href: "/resume" }].map((l) => (
+              {[...navLinks, { label: site.resumeLabel, href: "/resume" }].map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}

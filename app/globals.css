@@ -218,6 +218,19 @@ html.light {
     --navglass-blur: blur(28px) saturate(1.6) brightness(0.65);
   }
 
+  .tag {
+    --tag-hue: var(--acc2);
+    background: color-mix(in srgb, var(--tag-hue) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--tag-hue) 30%, transparent);
+    color: color-mix(in srgb, var(--tag-hue) 78%, var(--ink));
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+  }
+  .tag:hover {
+    background: color-mix(in srgb, var(--tag-hue) 20%, transparent);
+    border-color: color-mix(in srgb, var(--tag-hue) 55%, transparent);
+    transform: translateY(-2px);
+  }
+
   .glass-nav::after {
     content: "";
     position: absolute;

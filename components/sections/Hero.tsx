@@ -210,7 +210,7 @@ export default function Hero() {
               href="/resume"
               className="block rounded-full border border-linestrong px-7 py-3.5 text-sm font-medium text-ink transition-colors duration-300 hover:border-acc2 hover:text-acc2"
             >
-              Resume
+              {site.resumeLabel}
             </Link>
           </Magnetic>
         </motion.div>

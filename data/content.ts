@@ -19,6 +19,7 @@ export const site = {
   // TODO: replace with your real profile URLs
   linkedin: "https://www.linkedin.com/in/yatindran-sathishkumar-123513249",
   github: "https://github.com/YatinSathish",
+  resumeLabel: "Resumè",
   resumePdf: "/resume.pdf",
   // TODO: replace with the real repo URL once pushed to GitHub
   repo: "https://github.com/YatinSathish",
@@ -210,16 +211,49 @@ export const skills: { group: string; items: string[] }[] = [
   },
 ];
 
-export const education = [
+export type Education = {
+  school: string;
+  affiliation?: string;
+  degree: string;
+  dates: string;
+  coursework: string[];
+  activities: string[];
+};
+
+export const education: Education[] = [
   {
-    school: "UNSW Sydney",
+    school: "University of New South Wales (UNSW) Sydney",
     degree: "Master of Information Technology",
     dates: "Sep 2023 — Sep 2025",
+    coursework: [
+      "Data Services Engineering",
+      "Web Frontend Engineering",
+      "Recommender Systems",
+      "Computer Vision",
+      "Neural Networks",
+      "Blockchain Applications",
+    ],
+    activities: [
+      "Leadership Foundations Program",
+      "Professional Development Program",
+      "Study Australia Industry Experience Program (SAIEP)",
+    ],
   },
   {
-    school: "SSN College of Engineering, Chennai",
+    school: "Sri Sivasubramaniya Nadar College of Engineering (SSNCE)",
+    affiliation: "Affiliated with Anna University",
     degree: "Bachelor of Electrical and Electronics Engineering",
     dates: "Aug 2019 — Jun 2023",
+    coursework: [
+      "Digital Logic",
+      "Power Electronics",
+      "Microcontrollers",
+      "Electrical Machine Design",
+    ],
+    activities: [
+      "Event Organisation Committee — Invente Techfest",
+      "Member, SSN Youth Red Cross",
+    ],
   },
 ];
 

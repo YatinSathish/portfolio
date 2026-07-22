@@ -2,6 +2,7 @@ import { whatIDo } from "@/data/content";
 import { Reveal } from "../motion/primitives";
 import Section from "./Section";
 import SpotlightCard from "../SpotlightCard";
+import Tag from "../Tag";
 
 const icons = [
   // Mobile & full stack — smartphone
@@ -24,19 +25,13 @@ const icons = [
   </svg>,
 ];
 
-const hues: [string, string, string][] = [
-  ["var(--acc1)", "var(--acc2)", "var(--acc1)"],
-  ["var(--acc1)", "var(--acc3)", "var(--acc2)"],
-  ["var(--acc2)", "var(--acc3)", "var(--acc2)"],
-  ["var(--acc3)", "var(--acc2)", "var(--acc3)"],
-];
+const ICON_HUE = "var(--acc2)";
 
 export default function Skills() {
   return (
     <Section id="skills" number="03" title="What I do">
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {whatIDo.map((cap, i) => {
-          const [from, to, iconColor] = hues[i % hues.length];
           return (
             <Reveal key={cap.title} delay={(i % 2) * 0.1} className="h-full">
               <SpotlightCard className="h-full">
@@ -44,9 +39,9 @@ export default function Skills() {
                   <div
                     className="flex h-10 w-10 items-center justify-center rounded-xl border border-line"
                     style={{
-                      background: `linear-gradient(135deg, color-mix(in srgb, ${from} 20%, transparent), color-mix(in srgb, ${to} 11%, transparent))`,
-                      color: iconColor,
-                      boxShadow: `inset 0 0 10px color-mix(in srgb, ${from} 10%, transparent)`,
+                      background: `linear-gradient(135deg, color-mix(in srgb, ${ICON_HUE} 20%, transparent), color-mix(in srgb, ${ICON_HUE} 11%, transparent))`,
+                      color: ICON_HUE,
+                      boxShadow: `inset 0 0 10px color-mix(in srgb, ${ICON_HUE} 10%, transparent)`,
                     }}
                     aria-hidden="true"
                   >
@@ -60,12 +55,9 @@ export default function Skills() {
                   </p>
                   <div className="mt-auto flex flex-wrap gap-2 pt-6">
                     {cap.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-full border border-line px-3 py-1 font-mono text-[11px] text-mute transition-colors duration-300 hover:border-acc1/50 hover:text-acc1"
-                      >
+                      <Tag key={t} className="px-3 py-1 text-[11px]">
                         {t}
-                      </span>
+                      </Tag>
                     ))}
                   </div>
                 </div>

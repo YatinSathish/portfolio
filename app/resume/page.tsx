@@ -15,7 +15,7 @@ export default function ResumePage() {
           <div className="flex items-center gap-4">
             <BackOrb />
             <h1 className="font-display text-3xl font-semibold tracking-tight">
-              <span className="text-grad">Resume</span>
+              <span className="text-grad">{site.resumeLabel}</span>
             </h1>
           </div>
           <a
