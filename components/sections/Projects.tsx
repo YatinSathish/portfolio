@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { projects, site } from "@/data/content";
 import { Reveal } from "../motion/primitives";
 import Section from "./Section";
@@ -21,6 +22,16 @@ function GithubIcon() {
   );
 }
 
+function BriefcaseIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="3" y="7.5" width="18" height="12" rx="2" />
+      <path d="M8.5 7.5V6a2.5 2.5 0 0 1 2.5-2.5h2A2.5 2.5 0 0 1 15.5 6v1.5" />
+      <path d="M3 12.5h18" />
+    </svg>
+  );
+}
+
 const flagship = projects.find((p) => p.flagship)!;
 const rest = projects.filter((p) => !p.flagship);
 
@@ -37,7 +48,8 @@ export default function Projects() {
                     <h3 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
                       <span className="text-grad">{flagship.title}</span>
                     </h3>
-                    <span className="rounded-full border border-line bg-card px-3 py-1 font-mono text-[10px] tracking-wide text-mute">
+                    <span className="inline-flex items-center gap-1.5 font-mono text-[11px] tracking-wide text-ink/80">
+                      <BriefcaseIcon />
                       {flagship.attribution}
                     </span>
                   </div>
@@ -47,9 +59,28 @@ export default function Projects() {
                     </svg>
                     <span className="text-xs font-medium text-acc1">{flagship.grant}</span>
                   </div>
-                  <p className="mt-5 max-w-xl text-sm leading-relaxed text-mute sm:text-base">
-                    {flagship.description}
-                  </p>
+                  {flagship.hook && flagship.features ? (
+                    <>
+                      <p className="mt-5 max-w-xl text-sm leading-relaxed text-mute sm:text-base">
+                        {flagship.hook}
+                      </p>
+                      <div className="mt-4 flex max-w-xl flex-col gap-3">
+                        {flagship.features.map((f) => (
+                          <p key={f.label} className="text-sm leading-relaxed text-mute sm:text-base">
+                            <span className="font-display font-semibold text-ink">
+                              {f.label}
+                              {" — "}
+                            </span>
+                            {f.text}
+                          </p>
+                        ))}
+                      </div>
+                    </>
+                  ) : (
+                    <p className="mt-5 max-w-xl text-sm leading-relaxed text-mute sm:text-base">
+                      {flagship.description}
+                    </p>
+                  )}
                   <div className="mt-6 flex flex-wrap gap-2">
                     {flagship.tech.map((t) => (
                       <Tag key={t} hue="var(--acc2)" className="px-3 py-1 text-[11px]">
@@ -66,12 +97,34 @@ export default function Projects() {
                     >
                       {flagship.link!.label} <ExternalIcon />
                     </a>
-                    <Tag hue="var(--acc2)" className="inline-flex items-center gap-2 px-4 py-2.5 text-[11px]">
-                      iOS · App Store
-                    </Tag>
-                    <Tag hue="var(--acc2)" className="inline-flex items-center gap-2 px-4 py-2.5 text-[11px]">
-                      Android · Google Play
-                    </Tag>
+                    <a
+                      href={flagship.appStoreUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block transition-transform duration-300 hover:scale-105"
+                    >
+                      <Image
+                        src="/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.png"
+                        alt="Download on the App Store"
+                        width={374}
+                        height={125}
+                        className="h-11 w-auto"
+                      />
+                    </a>
+                    <a
+                      href={flagship.playStoreUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block transition-transform duration-300 hover:scale-105"
+                    >
+                      <Image
+                        src="/GetItOnGooglePlay_Badge_Web_color_English.png"
+                        alt="Get it on Google Play"
+                        width={747}
+                        height={221}
+                        className="h-11 w-auto"
+                      />
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-center justify-center py-2">
@@ -86,14 +139,9 @@ export default function Projects() {
           <Reveal key={p.id} delay={i * 0.1} y={36}>
             <SpotlightCard beamDelay={(i + 1) * 4.5} className="h-full">
               <div className="flex h-full flex-col p-6 sm:p-7">
-                <div className="flex items-start justify-between gap-3">
-                  <h3 className="font-display text-lg font-semibold leading-snug">
-                    {p.title}
-                  </h3>
-                  {p.date && (
-                    <span className="shrink-0 font-mono text-[10px] text-mute">{p.date}</span>
-                  )}
-                </div>
+                <h3 className="font-display text-lg font-semibold leading-snug">
+                  {p.title}
+                </h3>
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-mute">
                   {p.description}
                 </p>

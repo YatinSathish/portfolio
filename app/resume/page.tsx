@@ -79,17 +79,12 @@ export default function ResumePage() {
             <div className="mt-4 flex flex-col gap-4">
               {projects.map((p) => (
                 <div key={p.id}>
-                  <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <p className="font-semibold text-slate-900">
-                      {p.title}
-                      {p.attribution && (
-                        <span className="font-normal text-slate-500"> · {p.attribution}</span>
-                      )}
-                    </p>
-                    {p.date && (
-                      <span className="font-mono text-[11px] text-slate-400">{p.date}</span>
+                  <p className="font-semibold text-slate-900">
+                    {p.title}
+                    {p.attribution && (
+                      <span className="font-normal text-slate-500"> · {p.attribution}</span>
                     )}
-                  </div>
+                  </p>
                   <p className="mt-1 text-sm text-slate-600">{p.description}</p>
                   <p className="mt-1 font-mono text-[11px] text-slate-400">
                     {p.tech.join(" · ")}

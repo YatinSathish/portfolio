@@ -75,10 +75,17 @@ export type Project = {
   attribution?: string;
   grant?: string;
   description: string;
+  // Optional richer layout for the flagship card: a hook line followed by
+  // named feature blocks, rendered instead of the plain description paragraph.
+  hook?: string;
+  features?: { label: string; text: string }[];
   tech: string[];
   link?: { label: string; href: string };
   github?: string;
   stores?: boolean;
+  // TODO: add real App Store / Google Play links once submitted
+  appStoreUrl?: string;
+  playStoreUrl?: string;
   // Set to a path under /public (e.g. "/vouchpay.png") once the screenshot is added
   image?: string | null;
 };
@@ -88,10 +95,21 @@ export const projects: Project[] = [
     id: "vouchpay",
     title: "VouchPay",
     flagship: true,
-    attribution: "Built at Ladder Inc · Software Engineer",
+    attribution: "Shipped at Ladder Inc",
     grant: "Funded by the NSW Government MVP innovation grant",
     description:
-      "A trust & reputation platform for the Australian construction industry. Tradespeople and businesses vouch for each other, verified against the Australian Business Register, with role-based invoice approval keeping payments accountable end to end.",
+      "The Australian construction industry loses AU$3B+ annually to unpaid invoices and unreliable contractors. VouchPay tackles this with peer vouching — a portable, ABN-verified reputation system — and role-based invoice tracking that gives builders, PMs, owners and financiers full visibility from submission to payment.",
+    hook: "The Australian construction industry loses AU$3B+ annually to unpaid invoices and unreliable contractors. VouchPay addresses this with two core features:",
+    features: [
+      {
+        label: "Peer Vouching",
+        text: "Tradies build a portable reputation verified against the Australian Business Register, tied to their ABN rather than a platform account.",
+      },
+      {
+        label: "Role-Based Invoice Tracking",
+        text: "Builders, PMs, owners, and financiers track every invoice from submission through to payment, with full visibility into who submitted, what is outstanding, and where money is held up.",
+      },
+    ],
     tech: [
       "React Native",
       "TypeScript",
@@ -102,6 +120,8 @@ export const projects: Project[] = [
     ],
     link: { label: "vouchpay.app", href: "https://vouchpay.app" },
     stores: true,
+    appStoreUrl: "#", // TODO: paste real App Store link
+    playStoreUrl: "#", // TODO: paste real Google Play link
     image: null, // TODO: drop screenshot into /public and set e.g. "/vouchpay.png"
   },
   {
@@ -252,7 +272,7 @@ export const education: Education[] = [
     ],
     activities: [
       "Event Organisation Committee — Invente Techfest",
-      "Member, SSN Youth Red Cross",
+      "Volunteer, SSN Youth Red Cross",
     ],
   },
 ];
