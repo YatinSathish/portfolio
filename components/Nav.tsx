@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navLinks, site } from "@/data/content";
 import ThemeToggle from "./ThemeToggle";
-import { EASE } from "./motion/primitives";
+import { EASE, smoothScrollToId } from "./motion/primitives";
 
 export default function Nav() {
   const pathname = usePathname();
@@ -54,6 +54,13 @@ export default function Nav() {
     };
   }, [pathname]);
 
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    if (pathname === "/" && href.startsWith("/#")) {
+      e.preventDefault();
+      smoothScrollToId(href.slice(2));
+    }
+  };
+
   return (
     <div className="pointer-events-none fixed inset-x-0 top-4 z-50 flex flex-col items-center px-4">
       <nav
@@ -90,6 +97,7 @@ export default function Nav() {
               <Link
                 key={l.href}
                 href={l.href}
+                onClick={(e) => handleNavClick(e, l.href)}
                 className={`relative rounded-full px-4 py-2 text-[15px] transition-colors duration-300 ${
                   isActive ? "text-acc1" : "text-mute hover:text-ink"
                 }`}
@@ -152,7 +160,10 @@ export default function Nav() {
                 <Link
                   key={l.href}
                   href={l.href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => {
+                    handleNavClick(e, l.href);
+                    setMenuOpen(false);
+                  }}
                   className="border-b border-line/50 py-3 text-sm text-mute last:border-0 hover:text-acc1"
                 >
                   {l.label}

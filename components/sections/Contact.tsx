@@ -4,41 +4,41 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { site } from "@/data/content";
 import { EASE, Magnetic, Reveal } from "../motion/primitives";
+import Section from "./Section";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
 
-  const copyEmail = async () => {
+  const handleEmailClick = async () => {
     try {
       await navigator.clipboard.writeText(site.email);
       setCopied(true);
       setTimeout(() => setCopied(false), 2200);
-    } catch {
-      window.location.href = `mailto:${site.email}`;
-    }
+    } catch {}
   };
 
   return (
-    <section id="contact" className="relative mx-auto max-w-6xl px-5 pb-16 pt-24 sm:px-8 sm:pt-32">
+    <Section id="contact" number="05" title="Contact" center>
       <div className="flex flex-col items-center text-center">
-        <Reveal>
-          <p className="font-mono text-sm text-acc2/70">05 · Contact</p>
-        </Reveal>
         <Reveal delay={0.08}>
-          <h2 className="mt-5 font-display text-4xl font-semibold tracking-tight sm:text-6xl">
+          <h2 className="font-display text-4xl font-semibold tracking-tight sm:text-6xl">
             Let&apos;s build <span className="text-grad">something</span>
           </h2>
         </Reveal>
         <Reveal delay={0.16}>
-          <p className="mt-5 max-w-md text-sm text-mute sm:text-base">
-            {site.seeking}. If that sounds like your team, my inbox is open.
-          </p>
+          <div className="mt-5 flex max-w-md flex-col gap-2.5">
+            <p className="text-sm text-ink/80 sm:text-base">{site.seeking}.</p>
+            <p className="text-sm text-mute sm:text-base">
+              Got a role, a project, or just want to say hi? My inbox is always open.
+            </p>
+          </div>
         </Reveal>
         <Reveal delay={0.24}>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
             <Magnetic>
-              <button
-                onClick={copyEmail}
+              <a
+                href={`mailto:${site.email}`}
+                onClick={handleEmailClick}
                 className="relative flex cursor-pointer items-center gap-3 rounded-full bg-gradient-to-r from-acc1 to-acc3 px-7 py-3.5 text-sm font-medium text-bg transition-shadow duration-300 hover:shadow-[0_0_32px_var(--glow)]"
               >
                 <AnimatePresence mode="wait" initial={false}>
@@ -68,7 +68,7 @@ export default function Contact() {
                     </motion.span>
                   )}
                 </AnimatePresence>
-              </button>
+              </a>
             </Magnetic>
             <Magnetic>
               <a
@@ -99,6 +99,6 @@ export default function Contact() {
           </div>
         </Reveal>
       </div>
-    </section>
+    </Section>
   );
 }

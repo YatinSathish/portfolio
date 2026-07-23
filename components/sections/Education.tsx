@@ -24,7 +24,7 @@ export default function Education() {
                 <p className="mt-2 text-sm font-medium text-acc2">{e.degree}</p>
 
                 <div className="mt-5">
-                  <p className="font-mono text-[11px] tracking-[0.15em] text-mute/70">
+                  <p className="font-mono text-xs tracking-[0.15em] text-mute/70">
                     KEY COURSEWORK
                   </p>
                   <div className="mt-2.5 flex flex-wrap gap-2">
@@ -38,7 +38,7 @@ export default function Education() {
 
                 {e.activities.length > 0 && (
                   <div className="mt-5">
-                    <p className="font-mono text-[11px] tracking-[0.15em] text-mute/70">
+                    <p className="font-mono text-xs tracking-[0.15em] text-mute/70">
                       PROGRAMS &amp; ACTIVITIES
                     </p>
                     <ul className="mt-2.5 flex flex-col gap-1.5">

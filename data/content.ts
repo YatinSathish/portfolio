@@ -14,7 +14,7 @@ export const site = {
   ],
   pitch: "Full-stack engineer shipping mobile, web & AI products end to end.",
   location: "Based in Sydney · open to roles Australia-wide",
-  seeking: "Open to junior–mid roles in software, data engineering & AI",
+  seeking: "Open to junior–mid roles in software, AI & data engineering",
   email: "yatinsat@gmail.com",
   // TODO: replace with your real profile URLs
   linkedin: "https://www.linkedin.com/in/yatindran-sathishkumar-123513249",
@@ -39,10 +39,10 @@ export const experience: Experience[] = [
     role: "Software Engineer",
     dates: "Jan 2026 — Present",
     bullets: [
-      "Built and shipped VouchPay, a trust & reputation platform for Australian construction, funded by the NSW Government's MVP innovation grant.",
-      "Designed the core vouch reputation system with ABR business verification and a role-based invoice approval workflow.",
-      "Built dashboards, calendar views and invoice tracking UI across REST APIs and mobile.",
-      "Deployed to AWS EC2 with CI/CD via GitHub Actions; shipped iOS & Android via Expo EAS.",
+      "Built and shipped VouchPay, a trust and reputation platform for Australian construction funded by the NSW Government's MVP innovation grant, live on both the App Store and Google Play.",
+      "Developed key frontend screens including vouch flows, ABR-verified onboarding, project dashboards, and invoice tracking across the React Native mobile app.",
+      "Designed a role-based invoice approval system that routes invoices through the correct approver chain at submission time, with access controls enforced server-side.",
+      "Deployed backend to AWS EC2 with Nginx and CI/CD via GitHub Actions; shipped iOS and Android releases via Expo EAS.",
     ],
     tech: [
       "React Native",
@@ -50,6 +50,7 @@ export const experience: Experience[] = [
       "Node.js",
       "MongoDB Atlas",
       "AWS EC2",
+      "Nginx",
       "GitHub Actions",
       "Expo EAS",
     ],
@@ -120,8 +121,9 @@ export const projects: Project[] = [
     ],
     link: { label: "Visit vouchpay.app", href: "https://vouchpay.app" },
     stores: true,
-    appStoreUrl: "#", // TODO: paste real App Store link
-    playStoreUrl: "#", // TODO: paste real Google Play link
+    appStoreUrl: "https://apps.apple.com/ca/app/vouchpay/id6754034788",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.babylonnexus",
     image: null, // TODO: drop screenshot into /public and set e.g. "/vouchpay.png"
   },
   {
@@ -278,7 +280,8 @@ export const education: Education[] = [
 ];
 
 export const navLinks = [
-  { label: "Work", href: "/#experience", sections: ["experience", "projects"] },
+  { label: "Experience", href: "/#experience", sections: ["experience"] },
+  { label: "Projects", href: "/#projects", sections: ["projects"] },
   { label: "Stack", href: "/#skills", sections: ["skills", "education"] },
   { label: "Contact", href: "/#contact", sections: ["contact"] },
 ];

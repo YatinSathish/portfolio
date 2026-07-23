@@ -5,6 +5,16 @@ import { useRef, type ReactNode } from "react";
 
 export const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
+// Same-page hash links only scroll when the URL hash actually changes, so a
+// second click after manually scrolling away (hash unchanged) silently no-ops.
+// Call this from onClick (after preventDefault) to always scroll regardless.
+export function smoothScrollToId(id: string) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+}
+
 export function Reveal({
   children,
   delay = 0,

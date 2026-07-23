@@ -1,6 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { experience } from "@/data/content";
-import { Reveal } from "../motion/primitives";
+import { Reveal, smoothScrollToId } from "../motion/primitives";
 import Section from "./Section";
 import Tag from "../Tag";
 import SpotlightCard from "../SpotlightCard";
@@ -13,6 +15,10 @@ function Bullet({ text }: { text: string }) {
       {parts[0]}
       <Link
         href="/#vouchpay"
+        onClick={(e) => {
+          e.preventDefault();
+          smoothScrollToId("vouchpay");
+        }}
         className="font-medium text-acc1 underline decoration-acc1/40 underline-offset-4 transition-colors hover:decoration-acc1"
       >
         VouchPay
