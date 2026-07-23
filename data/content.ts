@@ -118,7 +118,7 @@ export const projects: Project[] = [
       "AWS EC2",
       "Expo EAS",
     ],
-    link: { label: "vouchpay.app", href: "https://vouchpay.app" },
+    link: { label: "Visit vouchpay.app", href: "https://vouchpay.app" },
     stores: true,
     appStoreUrl: "#", // TODO: paste real App Store link
     playStoreUrl: "#", // TODO: paste real Google Play link

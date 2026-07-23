@@ -24,7 +24,7 @@ function GithubIcon() {
 
 function BriefcaseIcon() {
   return (
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <rect x="3" y="7.5" width="18" height="12" rx="2" />
       <path d="M8.5 7.5V6a2.5 2.5 0 0 1 2.5-2.5h2A2.5 2.5 0 0 1 15.5 6v1.5" />
       <path d="M3 12.5h18" />
@@ -48,7 +48,7 @@ export default function Projects() {
                     <h3 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
                       <span className="text-grad">{flagship.title}</span>
                     </h3>
-                    <span className="inline-flex items-center gap-1.5 font-mono text-[11px] tracking-wide text-ink/80">
+                    <span className="inline-flex items-center gap-1.5 font-mono text-sm tracking-wide text-ink/80">
                       <BriefcaseIcon />
                       {flagship.attribution}
                     </span>
@@ -88,7 +88,7 @@ export default function Projects() {
                       </Tag>
                     ))}
                   </div>
-                  <div className="mt-7 flex flex-wrap items-center gap-3">
+                  <div className="mt-7">
                     <a
                       href={flagship.link!.href}
                       target="_blank"
@@ -97,34 +97,41 @@ export default function Projects() {
                     >
                       {flagship.link!.label} <ExternalIcon />
                     </a>
-                    <a
-                      href={flagship.appStoreUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block transition-transform duration-300 hover:scale-105"
-                    >
-                      <Image
-                        src="/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.png"
-                        alt="Download on the App Store"
-                        width={374}
-                        height={125}
-                        className="h-11 w-auto"
-                      />
-                    </a>
-                    <a
-                      href={flagship.playStoreUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block transition-transform duration-300 hover:scale-105"
-                    >
-                      <Image
-                        src="/GetItOnGooglePlay_Badge_Web_color_English.png"
-                        alt="Get it on Google Play"
-                        width={747}
-                        height={221}
-                        className="h-11 w-auto"
-                      />
-                    </a>
+                  </div>
+                  <div className="mt-5">
+                    <p className="mb-2 font-mono text-[10px] tracking-[0.15em] text-mute/70">
+                      AVAILABLE ON
+                    </p>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <a
+                        href={flagship.appStoreUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block transition-transform duration-300 hover:scale-105"
+                      >
+                        <Image
+                          src="/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.png"
+                          alt="Download on the App Store"
+                          width={374}
+                          height={125}
+                          className="h-11 w-auto"
+                        />
+                      </a>
+                      <a
+                        href={flagship.playStoreUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block transition-transform duration-300 hover:scale-105"
+                      >
+                        <Image
+                          src="/GetItOnGooglePlay_Badge_Web_color_English.png"
+                          alt="Get it on Google Play"
+                          width={747}
+                          height={221}
+                          className="h-11 w-auto"
+                        />
+                      </a>
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-center justify-center py-2">
