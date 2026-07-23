@@ -95,7 +95,9 @@ export default function Contact() {
       <div className="flex flex-col items-center text-center">
         <Reveal delay={0.08}>
           <h2 className="font-display text-4xl font-semibold tracking-tight sm:text-6xl">
-            Let&apos;s build something <BuildWordCycler />
+            Let&apos;s build something{" "}
+            <br className="block lg:hidden" />
+            <BuildWordCycler />
             <span className="text-ink">.</span>
           </h2>
         </Reveal>
