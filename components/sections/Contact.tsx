@@ -96,6 +96,7 @@ export default function Contact() {
         <Reveal delay={0.08}>
           <h2 className="font-display text-4xl font-semibold tracking-tight sm:text-6xl">
             Let&apos;s build something <BuildWordCycler />
+            <span className="text-ink">.</span>
           </h2>
         </Reveal>
         <Reveal delay={0.16}>
