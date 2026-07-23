@@ -13,7 +13,7 @@ export const site = {
     "DATA ANALYST",
   ],
   pitch: "Full-stack engineer shipping mobile, web & AI products end to end.",
-  location: "Based in Sydney · open to roles Australia-wide",
+  location: "Based in Sydney · Open to roles Australia-wide",
   seeking: "Open to junior–mid roles in software, AI & data engineering",
   email: "yatinsat@gmail.com",
   // TODO: replace with your real profile URLs
