@@ -52,7 +52,12 @@ export default function Experience() {
                       </h3>
                       <span className="font-mono text-xs text-mute">{job.dates}</span>
                     </div>
-                    <p className="mt-1 text-sm font-medium text-acc2">{job.role}</p>
+                    <p className="mt-1 text-sm font-medium text-acc2">
+                      {job.role}
+                      {job.location && (
+                        <span className="text-mute"> · {job.location}</span>
+                      )}
+                    </p>
                     <ul className="mt-5 flex flex-col gap-2.5">
                       {job.bullets.map((b) => (
                         <li key={b} className="flex gap-3 text-sm leading-relaxed text-mute">

@@ -58,7 +58,11 @@ export default function ResumePage() {
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
                     <p className="font-semibold text-slate-900">
                       {job.company}
-                      <span className="font-normal text-slate-500"> — {job.role}</span>
+                      <span className="font-normal text-slate-500">
+                        {" "}
+                        — {job.role}
+                        {job.location && `, ${job.location}`}
+                      </span>
                     </p>
                     <span className="font-mono text-[11px] text-slate-400">{job.dates}</span>
                   </div>

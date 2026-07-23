@@ -229,7 +229,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1.12, ease: EASE }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          className="mt-10 flex flex-wrap items-center justify-center gap-4 sm:flex-nowrap"
         >
           <Magnetic>
             <Link
@@ -239,19 +239,11 @@ export default function Hero() {
               {site.resumeLabel}
             </Link>
           </Magnetic>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.32, ease: EASE }}
-          className="mt-6 flex flex-wrap items-center justify-center gap-3"
-        >
           <Magnetic strength={0.2}>
             <a
               href={`mailto:${site.email}`}
               onClick={handleEmailClick}
-              className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 font-mono text-xs text-ink/85 transition-colors duration-300 hover:text-acc2 sm:text-sm"
+              className="glass inline-flex h-12 items-center gap-2 rounded-full px-5 font-mono text-xs text-ink/85 transition-colors duration-300 hover:text-acc2 sm:text-sm"
             >
               <MailIcon />
               {copied ? "Copied ✓" : site.email}
@@ -263,7 +255,7 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn profile"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-linestrong text-mute transition-colors duration-300 hover:border-acc2 hover:text-acc2"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-linestrong text-mute transition-colors duration-300 hover:border-acc2 hover:text-acc2"
             >
               <LinkedInIcon />
             </a>
@@ -274,7 +266,7 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub profile"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-linestrong text-mute transition-colors duration-300 hover:border-acc2 hover:text-acc2"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-linestrong text-mute transition-colors duration-300 hover:border-acc2 hover:text-acc2"
             >
               <GithubIcon />
             </a>

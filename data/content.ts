@@ -21,13 +21,13 @@ export const site = {
   github: "https://github.com/YatinSathish",
   resumeLabel: "Resumè",
   resumePdf: "/resume.pdf",
-  // TODO: replace with the real repo URL once pushed to GitHub
-  repo: "https://github.com/YatinSathish",
+  repo: "https://github.com/YatinSathish/portfolio",
 };
 
 export type Experience = {
   company: string;
   role: string;
+  location?: string;
   dates: string;
   bullets: string[];
   tech: string[];
@@ -37,6 +37,7 @@ export const experience: Experience[] = [
   {
     company: "Ladder Inc.",
     role: "Software Engineer",
+    location: "Sydney",
     dates: "Jan 2026 — Present",
     bullets: [
       "Built and shipped VouchPay, a trust and reputation platform for Australian construction funded by the NSW Government's MVP innovation grant, live on both the App Store and Google Play.",
@@ -58,6 +59,7 @@ export const experience: Experience[] = [
   {
     company: "Freelance Web Developer",
     role: "Self-employed",
+    location: "Sydney",
     dates: "Apr 2026 — Present",
     bullets: [
       "Design and build modern, high-performance websites for small businesses — from React/Next.js builds to custom-themed WordPress sites.",
@@ -277,6 +279,17 @@ export const education: Education[] = [
       "Volunteer, SSN Youth Red Cross",
     ],
   },
+];
+
+export const buildWords = [
+  "bold",
+  "smart",
+  "real",
+  "useful",
+  "ambitious",
+  "meaningful",
+  "memorable",
+  "exceptional",
 ];
 
 export const navLinks = [
