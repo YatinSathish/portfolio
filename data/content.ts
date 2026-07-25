@@ -148,6 +148,14 @@ export const projects: Project[] = [
     github: "https://github.com/YatinSathish/PDF-Reader-Chatbot",
   },
   {
+    id: "field-service-scheduler",
+    title: "Conflict-Free Field Service Scheduling System",
+    description:
+      "A full-stack scheduling app that assigns technician jobs with transaction-based conflict prevention, closing the race condition behind double-booking, plus a real-time slot availability API and notification tracking.",
+    tech: ["Next.js", "TypeScript", "Prisma", "SQLite", "Tailwind CSS"],
+    github: "https://github.com/YatinSathish/scheduling-platform",
+  },
+  {
     id: "data-pipeline",
     title: "NSW Fuel Price Data Analysis",
     description:
