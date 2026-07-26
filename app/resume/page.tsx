@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { education, experience, projects, site, skills } from "@/data/content";
+import { site } from "@/data/content";
 import { Reveal } from "@/components/motion/primitives";
 import BackOrb from "@/components/BackOrb";
 
@@ -32,108 +32,33 @@ export default function ResumePage() {
       </Reveal>
 
       <Reveal delay={0.1}>
-        <article className="print-doc rounded-2xl border border-line bg-white p-8 text-slate-800 shadow-2xl sm:p-12">
-          <header className="border-b border-slate-200 pb-6">
-            <h2 className="font-display text-2xl font-bold text-slate-900 sm:text-3xl">
-              {site.name}
-            </h2>
-            <p className="mt-1 text-sm font-medium text-emerald-700">
-              {site.role} · {site.location}
-            </p>
-            <p className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500">
-              <span>{site.email}</span>
-              <a className="text-emerald-700 underline-offset-2 hover:underline" href={site.linkedin}>LinkedIn</a>
-              <a className="text-emerald-700 underline-offset-2 hover:underline" href={site.github}>GitHub</a>
-            </p>
-            <p className="mt-3 text-sm text-slate-600">{site.seeking}.</p>
-          </header>
-
-          <section className="mt-7">
-            <h3 className="font-mono text-[11px] font-medium tracking-[0.25em] text-slate-400">
-              EXPERIENCE
-            </h3>
-            <div className="mt-4 flex flex-col gap-6">
-              {experience.map((job) => (
-                <div key={job.company}>
-                  <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <p className="font-semibold text-slate-900">
-                      {job.company}
-                      <span className="font-normal text-slate-500">
-                        {" "}
-                        — {job.role}
-                        {job.location && `, ${job.location}`}
-                      </span>
-                    </p>
-                    <span className="font-mono text-[11px] text-slate-400">{job.dates}</span>
-                  </div>
-                  <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
-                    {job.bullets.map((b) => (
-                      <li key={b}>{b}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+        <div className="print-doc mx-auto aspect-[8.5/11] w-full max-w-2xl overflow-hidden rounded-2xl border border-line bg-white shadow-2xl">
+          <object
+            data={site.resumePdf}
+            type="application/pdf"
+            className="h-full w-full"
+            aria-label={`${site.name} resume PDF`}
+          >
+            <div className="flex h-full flex-col items-center justify-center gap-4 p-8 text-center">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <path d="M14 2v6h6" />
+              </svg>
+              <p className="max-w-xs text-sm text-slate-500">
+                Your browser can&apos;t preview this PDF inline. Download it
+                instead to view it.
+              </p>
+              <a
+                href={site.resumePdf}
+                download="Yatindran_Sathishkumar_Resume.pdf"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-acc1 to-acc3 px-5 py-2.5 text-sm font-medium text-bg"
+              >
+                Download PDF
+              </a>
             </div>
-          </section>
-
-          <section className="mt-7">
-            <h3 className="font-mono text-[11px] font-medium tracking-[0.25em] text-slate-400">
-              PROJECTS
-            </h3>
-            <div className="mt-4 flex flex-col gap-4">
-              {projects.map((p) => (
-                <div key={p.id}>
-                  <p className="font-semibold text-slate-900">
-                    {p.title}
-                    {p.attribution && (
-                      <span className="font-normal text-slate-500"> · {p.attribution}</span>
-                    )}
-                  </p>
-                  <p className="mt-1 text-sm text-slate-600">{p.description}</p>
-                  <p className="mt-1 font-mono text-[11px] text-slate-400">
-                    {p.tech.join(" · ")}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="mt-7">
-            <h3 className="font-mono text-[11px] font-medium tracking-[0.25em] text-slate-400">
-              SKILLS
-            </h3>
-            <div className="mt-3 flex flex-col gap-1.5">
-              {skills.map((g) => (
-                <p key={g.group} className="text-sm text-slate-600">
-                  <span className="font-medium text-slate-900">{g.group}: </span>
-                  {g.items.join(", ")}
-                </p>
-              ))}
-            </div>
-          </section>
-
-          <section className="mt-7">
-            <h3 className="font-mono text-[11px] font-medium tracking-[0.25em] text-slate-400">
-              EDUCATION
-            </h3>
-            <div className="mt-3 flex flex-col gap-3">
-              {education.map((e) => (
-                <div key={e.school} className="flex flex-wrap items-baseline justify-between gap-2">
-                  <p className="text-sm">
-                    <span className="font-semibold text-slate-900">{e.school}</span>
-                    <span className="text-slate-600"> — {e.degree}</span>
-                  </p>
-                  <span className="font-mono text-[11px] text-slate-400">{e.dates}</span>
-                </div>
-              ))}
-            </div>
-          </section>
-        </article>
+          </object>
+        </div>
       </Reveal>
-
-      <p className="no-print mt-6 text-center font-mono text-[11px] text-mute">
-        Tip: Ctrl+P prints a clean copy of this page.
-      </p>
     </main>
   );
 }

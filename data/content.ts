@@ -20,7 +20,7 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/yatindran-sathishkumar-123513249",
   github: "https://github.com/YatinSathish",
   resumeLabel: "Resumè",
-  resumePdf: "/resume.pdf",
+  resumePdf: "/Yatindran_Sathishkumar_Resume.pdf",
   repo: "https://github.com/YatinSathish/portfolio",
 };
 
