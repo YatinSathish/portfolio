@@ -135,7 +135,7 @@ export default function Projects() {
                   </div>
                 </div>
                 <div className="flex items-center justify-center py-2">
-                  <PhoneMock image={flagship.image} />
+                  <PhoneMock images={flagship.images} />
                 </div>
               </div>
             </SpotlightCard>

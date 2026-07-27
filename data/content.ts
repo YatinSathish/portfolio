@@ -89,8 +89,9 @@ export type Project = {
   // TODO: add real App Store / Google Play links once submitted
   appStoreUrl?: string;
   playStoreUrl?: string;
-  // Set to a path under /public (e.g. "/vouchpay.png") once the screenshot is added
-  image?: string | null;
+  // Paths under /public. One image shows statically; multiple cycle with a
+  // crossfade in the phone mock, with pagination dots.
+  images?: string[];
 };
 
 export const projects: Project[] = [
@@ -126,7 +127,6 @@ export const projects: Project[] = [
     appStoreUrl: "https://apps.apple.com/ca/app/vouchpay/id6754034788",
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.babylonnexus",
-    image: null, // TODO: drop screenshot into /public and set e.g. "/vouchpay.png"
   },
   {
     id: "rag-system",

@@ -1,10 +1,61 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { EASE } from "./motion/primitives";
 
-export default function PhoneMock({ image }: { image?: string | null }) {
+function ScreenCycler({ images }: { images: string[] }) {
+  const reduced = useReducedMotion();
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (reduced || images.length < 2) return;
+    const id = setInterval(() => {
+      if (!document.hidden) setIndex((v) => (v + 1) % images.length);
+    }, 3800);
+    return () => clearInterval(id);
+  }, [reduced, images.length]);
+
+  return (
+    <div className="relative aspect-[9/19]">
+      <AnimatePresence initial={false}>
+        <motion.div
+          key={images[index]}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6, ease: EASE }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={images[index]}
+            alt="VouchPay app screenshot"
+            fill
+            sizes="230px"
+            className="object-contain"
+          />
+        </motion.div>
+      </AnimatePresence>
+      {images.length > 1 && (
+        <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-1.5">
+          {images.map((src, i) => (
+            <span
+              key={src}
+              className="h-1.5 w-1.5 rounded-full transition-colors duration-300"
+              style={{
+                background:
+                  i === index ? "var(--acc2)" : "color-mix(in srgb, var(--mute) 50%, transparent)",
+              }}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function PhoneMock({ images }: { images?: string[] }) {
   return (
     <motion.div
       initial={{ clipPath: "inset(12% 12% 12% 12% round 2.4rem)", opacity: 0, scale: 1.06 }}
@@ -13,16 +64,8 @@ export default function PhoneMock({ image }: { image?: string | null }) {
       transition={{ duration: 1.1, ease: EASE }}
       className="relative mx-auto w-[230px] overflow-hidden rounded-[2.4rem] border border-linestrong bg-bg2 shadow-[0_24px_80px_-24px_var(--glow)]"
     >
-      {image ? (
-        <div className="relative aspect-[9/19]">
-          <Image
-            src={image}
-            alt="VouchPay app screenshot"
-            fill
-            sizes="230px"
-            className="object-cover"
-          />
-        </div>
+      {images && images.length > 0 ? (
+        <ScreenCycler images={images} />
       ) : (
         <div className="flex aspect-[9/19] flex-col p-4" aria-label="VouchPay app preview placeholder">
           <div className="mx-auto mb-4 mt-1 h-1.5 w-16 rounded-full bg-line" />
