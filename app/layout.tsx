@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Aurora from "@/components/backgrounds/Aurora";
 import DustMotes from "@/components/backgrounds/DustMotes";
@@ -71,6 +72,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <ScrollTop />
+        <Analytics />
       </body>
     </html>
   );
