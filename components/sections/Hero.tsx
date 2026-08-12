@@ -233,7 +233,7 @@ export default function Hero() {
         >
           <Magnetic>
             <Link
-              href="/resume"
+              href="/"
               className="block rounded-full bg-gradient-to-r from-acc1 to-acc3 px-7 py-3.5 text-sm font-medium text-bg transition-shadow duration-300 hover:shadow-[0_0_32px_var(--glow)]"
             >
               {site.resumeLabel}

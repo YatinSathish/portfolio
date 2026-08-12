@@ -57,6 +57,17 @@ export const experience: Experience[] = [
     ],
   },
   {
+    company: "ClaritySRM",
+    role: "Software Engineer",
+    location: "Sydney",
+    dates: "", // TODO: add date range
+    bullets: [
+      "Developed Next.js frontend UI components for an AI-based tender management platform built in collaboration with an enterprise client.",
+      "Collaborated with client stakeholders to define how key workflows should function within the platform, bridging business needs and technical implementation.",
+    ],
+    tech: ["Next.js", "TypeScript", "GitHub"],
+  },
+  {
     company: "Freelance Web Developer",
     role: "Self-employed",
     location: "Sydney",

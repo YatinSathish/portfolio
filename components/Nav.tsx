@@ -122,7 +122,7 @@ export default function Nav() {
         <div className="ml-1 flex items-center gap-1.5">
           <ThemeToggle />
           <Link
-            href="/resume"
+            href="/"
             className="jewel hidden rounded-full px-5 py-2 text-[15px] font-medium sm:block"
           >
             <span className="jewel-label">{site.resumeLabel}</span>
@@ -156,7 +156,7 @@ export default function Nav() {
             }pointer-events-auto mt-2 w-full max-w-sm rounded-3xl shadow-[var(--navglass-shadow)] md:hidden`}
           >
             <div className="flex flex-col px-5 py-3">
-              {[...navLinks, { label: site.resumeLabel, href: "/resume" }].map((l) => (
+              {[...navLinks, { label: site.resumeLabel, href: "/" }].map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
