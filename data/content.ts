@@ -38,7 +38,7 @@ export const experience: Experience[] = [
     company: "Ladder Inc.",
     role: "Software Engineer",
     location: "Sydney",
-    dates: "Jan 2026 — Present",
+    dates: "Present",
     bullets: [
       "Built and shipped VouchPay, a trust and reputation platform for Australian construction funded by the NSW Government's MVP innovation grant, live on both the App Store and Google Play.",
       "Developed key frontend screens including vouch flows, ABR-verified onboarding, project dashboards, and invoice tracking across the React Native mobile app.",
@@ -60,7 +60,7 @@ export const experience: Experience[] = [
     company: "Freelance Web Developer",
     role: "Self-employed",
     location: "Sydney",
-    dates: "Apr 2026 — Present",
+    dates: "",
     bullets: [
       "Design and build modern, high-performance websites for small businesses — from React/Next.js builds to custom-themed WordPress sites.",
       "Implement backend integrations including email/SMTP and analytics.",
