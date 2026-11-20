@@ -241,6 +241,31 @@ html.light {
     background: linear-gradient(90deg, transparent, var(--glass-hl), transparent);
     pointer-events: none;
   }
+
+  .toggle-orb {
+    position: relative;
+    background: color-mix(in srgb, var(--acc2) 10%, transparent);
+    box-shadow: inset 0 0 10px color-mix(in srgb, var(--acc2) 16%, transparent);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .toggle-orb::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--acc2) 55%, transparent),
+      color-mix(in srgb, var(--acc1) 15%, transparent) 60%,
+      color-mix(in srgb, var(--acc2) 55%, transparent)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
 }
 
 html {

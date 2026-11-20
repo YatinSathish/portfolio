@@ -1,5 +1,6 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import { useSyncExternalStore } from "react";
 
 function subscribe(callback: () => void) {
@@ -17,6 +18,7 @@ export default function ThemeToggle() {
     () => document.documentElement.classList.contains("light"),
     () => false
   );
+  const reduced = useReducedMotion();
 
   const toggle = (e: React.MouseEvent) => {
     const next = !light;
@@ -63,10 +65,17 @@ export default function ThemeToggle() {
   };
 
   return (
-    <button
+    <motion.button
       onClick={toggle}
       aria-label={light ? "Switch to dark mode" : "Switch to light mode"}
-      className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-mute transition-colors duration-300 hover:border-acc2 hover:text-acc2 cursor-pointer sm:h-10 sm:w-10"
+      whileHover={
+        reduced
+          ? undefined
+          : { scale: 1.08, boxShadow: "0 0 20px var(--glow)" }
+      }
+      whileTap={reduced ? undefined : { scale: 0.88 }}
+      transition={{ type: "spring", stiffness: 420, damping: 18 }}
+      className="toggle-orb flex h-9 w-9 items-center justify-center rounded-full text-acc2/80 transition-colors duration-300 hover:text-acc2 cursor-pointer sm:h-10 sm:w-10"
     >
       {light ? (
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -78,6 +87,6 @@ export default function ThemeToggle() {
           <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
         </svg>
       )}
-    </button>
+    </motion.button>
   );
 }

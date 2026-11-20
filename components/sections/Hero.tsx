@@ -7,7 +7,6 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { site } from "@/data/content";
 import { EASE, Magnetic } from "../motion/primitives";
@@ -231,14 +230,6 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 1.12, ease: EASE }}
           className="mt-10 flex flex-wrap items-center justify-center gap-4 sm:flex-nowrap"
         >
-          <Magnetic>
-            <Link
-              href="/"
-              className="block rounded-full bg-gradient-to-r from-acc1 to-acc3 px-7 py-3.5 text-sm font-medium text-bg transition-shadow duration-300 hover:shadow-[0_0_32px_var(--glow)]"
-            >
-              {site.resumeLabel}
-            </Link>
-          </Magnetic>
           <Magnetic strength={0.2}>
             <a
               href={`mailto:${site.email}`}

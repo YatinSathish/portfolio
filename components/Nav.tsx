@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { navLinks, site } from "@/data/content";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { navLinks } from "@/data/content";
 import ThemeToggle from "./ThemeToggle";
 import { EASE, smoothScrollToId } from "./motion/primitives";
 
@@ -13,6 +13,8 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [hovered, setHovered] = useState<string | null>(null);
+  const reduced = useReducedMotion();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -90,7 +92,10 @@ export default function Nav() {
           <span className="text-grad">.</span>
         </Link>
 
-        <div className="hidden items-center md:flex">
+        <div
+          className="hidden items-center md:flex"
+          onMouseLeave={() => setHovered(null)}
+        >
           {navLinks.map((l) => {
             const isActive = pathname === "/" && l.sections.includes(active);
             return (
@@ -98,20 +103,53 @@ export default function Nav() {
                 key={l.href}
                 href={l.href}
                 onClick={(e) => handleNavClick(e, l.href)}
+                onMouseEnter={() => setHovered(l.href)}
+                onFocus={() => setHovered(l.href)}
+                onBlur={() => setHovered(null)}
                 className={`relative rounded-full px-4 py-2 text-[15px] transition-colors duration-300 ${
-                  isActive ? "text-acc1" : "text-mute hover:text-ink"
+                  isActive ? "text-acc1" : "text-ink/75 hover:text-ink"
                 }`}
               >
+                {hovered === l.href && (
+                  <motion.span
+                    layoutId="nav-lens"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={
+                      reduced
+                        ? { duration: 0 }
+                        : { type: "spring", stiffness: 420, damping: 34 }
+                    }
+                    className="absolute inset-0 rounded-full border border-line"
+                    style={{
+                      background:
+                        "color-mix(in srgb, var(--ink) 7%, transparent)",
+                    }}
+                  />
+                )}
                 {isActive && (
                   <motion.span
                     layoutId="nav-chip"
-                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                    className="absolute inset-0 rounded-full border border-acc1/25"
+                    transition={
+                      reduced
+                        ? { duration: 0 }
+                        : { type: "spring", stiffness: 380, damping: 32 }
+                    }
+                    className="absolute inset-0 rounded-full border border-acc1/40"
                     style={{
                       background:
-                        "color-mix(in srgb, var(--acc1) 12%, transparent)",
+                        "color-mix(in srgb, var(--acc1) 16%, transparent)",
+                      boxShadow:
+                        "inset 0 0 12px color-mix(in srgb, var(--acc1) 22%, transparent), 0 0 14px color-mix(in srgb, var(--acc1) 14%, transparent)",
                     }}
-                  />
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="absolute -bottom-0.5 left-1/2 h-[3px] w-[3px] -translate-x-1/2 rounded-full bg-acc1"
+                      style={{ boxShadow: "0 0 6px var(--acc1)" }}
+                    />
+                  </motion.span>
                 )}
                 <span className="relative z-10">{l.label}</span>
               </Link>
@@ -121,12 +159,6 @@ export default function Nav() {
 
         <div className="ml-1 flex items-center gap-1.5">
           <ThemeToggle />
-          <Link
-            href="/"
-            className="jewel hidden rounded-full px-5 py-2 text-[15px] font-medium sm:block"
-          >
-            <span className="jewel-label">{site.resumeLabel}</span>
-          </Link>
           <button
             onClick={() => setMenuOpen((v) => !v)}
             aria-label="Toggle menu"
@@ -156,7 +188,7 @@ export default function Nav() {
             }pointer-events-auto mt-2 w-full max-w-sm rounded-3xl shadow-[var(--navglass-shadow)] md:hidden`}
           >
             <div className="flex flex-col px-5 py-3">
-              {[...navLinks, { label: site.resumeLabel, href: "/" }].map((l) => (
+              {navLinks.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
