@@ -114,37 +114,6 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    id: "ai-companion-memory",
-    title: "AI Companion for Aged Care",
-    flagship: true,
-    attribution: "Shipped at Ladder Inc",
-    description:
-      "A memory system that lets an AI companion remember each person between conversations, without ever exposing sensitive details to the model.",
-    hook: "Loneliness is a real problem in aged care. This memory system lets an AI companion remember each person between conversations, without ever exposing sensitive details to the model.",
-    features: [
-      {
-        label: "Privacy First",
-        text: "Only a short summary reaches the model. Medication and other sensitive details never do, and conversations are encrypted, access-audited and kept in Sydney.",
-      },
-      {
-        label: "Memories That Are Checked",
-        text: "An LLM on Amazon Bedrock turns each chat into memories, and every one is verified in code against what the person actually said.",
-      },
-      {
-        label: "Carer Input",
-        text: "Carers add what residents can't always tell us themselves, such as family names, routines and topics to avoid, kept separate from the resident's own words.",
-      },
-    ],
-    tech: [
-      "Python",
-      "FastAPI",
-      "Amazon Bedrock",
-      "PostgreSQL",
-      "AWS CDK",
-      "ECS Fargate",
-    ],
-  },
-  {
     id: "charity-funding-platform",
     title: "AI-Assisted Charity Funding Platform",
     flagship: true,
@@ -171,6 +140,37 @@ export const projects: Project[] = [
       "Next.js",
       "PostgreSQL",
       "Prisma",
+      "AWS CDK",
+      "ECS Fargate",
+    ],
+  },
+  {
+    id: "ai-companion-memory",
+    title: "AI Companion for Aged Care",
+    flagship: true,
+    attribution: "Shipped at Ladder Inc",
+    description:
+      "A memory system that lets an AI companion remember each person between conversations, without ever exposing sensitive details to the model.",
+    hook: "Loneliness is a real problem in aged care. This memory system lets an AI companion remember each person between conversations, without ever exposing sensitive details to the model.",
+    features: [
+      {
+        label: "Privacy First",
+        text: "Only a short summary reaches the model. Medication and other sensitive details never do, and conversations are encrypted, access-audited and kept in Sydney.",
+      },
+      {
+        label: "Memories That Are Checked",
+        text: "An LLM on Amazon Bedrock turns each chat into memories, and every one is verified in code against what the person actually said.",
+      },
+      {
+        label: "Carer Input",
+        text: "Carers add what residents can't always tell us themselves, such as family names, routines and topics to avoid, kept separate from the resident's own words.",
+      },
+    ],
+    tech: [
+      "Python",
+      "FastAPI",
+      "Amazon Bedrock",
+      "PostgreSQL",
       "AWS CDK",
       "ECS Fargate",
     ],
