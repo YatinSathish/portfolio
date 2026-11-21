@@ -7,14 +7,13 @@ export const site = {
   eyebrow: "SOFTWARE ENGINEER",
   roles: [
     "SOFTWARE ENGINEER",
-    "MOBILE APP DEVELOPER",
     "AI ENGINEER",
-    "WEB DEVELOPER",
-    "DATA ANALYST",
+    "FULL-STACK DEVELOPER",
+    "CLOUD ENGINEER",
   ],
-  pitch: "Full-stack engineer shipping mobile, web & AI products end to end.",
+  pitch: "Full-stack engineer building AI products, from first screen to production.",
   location: "Based in Sydney · Open to roles Australia-wide",
-  seeking: "Open to junior–mid roles in software, AI & data engineering",
+  seeking: "Open to full-stack & AI engineering roles",
   email: "yatinsat@gmail.com",
   // TODO: replace with your real profile URLs
   linkedin: "https://www.linkedin.com/in/yatindran-sathishkumar-123513249",
@@ -40,18 +39,26 @@ export const experience: Experience[] = [
     location: "Sydney",
     dates: "Oct 2025 — Present",
     bullets: [
+      "Built the memory layer for an AI aged-care companion on Amazon Bedrock, FastAPI and PostgreSQL, so it remembers each person between conversations while keeping sensitive details away from the model.",
+      "Built a platform connecting private philanthropic funds with small Australian charities, including an AI-driven readiness assessment, on Next.js, PostgreSQL and AWS (CDK, ECS Fargate).",
       "Built and shipped VouchPay, a trust and reputation platform for Australian construction funded by the NSW Government's MVP innovation grant, live on both the App Store and Google Play.",
       "Developed key frontend screens including vouch flows, ABR-verified onboarding, project dashboards, and invoice tracking across the React Native mobile app.",
       "Designed a role-based invoice approval system that routes invoices through the correct approver chain at submission time, with access controls enforced server-side.",
       "Deployed backend to AWS EC2 with Nginx and CI/CD via GitHub Actions; shipped iOS and Android releases via Expo EAS.",
     ],
     tech: [
-      "React Native",
+      "Python",
+      "FastAPI",
+      "Amazon Bedrock",
+      "Next.js",
       "TypeScript",
+      "PostgreSQL",
+      "AWS CDK",
+      "ECS Fargate",
+      "React Native",
       "Node.js",
       "MongoDB Atlas",
       "AWS EC2",
-      "Nginx",
       "GitHub Actions",
       "Expo EAS",
     ],
@@ -106,6 +113,68 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    id: "ai-companion-memory",
+    title: "AI Companion for Aged Care",
+    flagship: true,
+    attribution: "Shipped at Ladder Inc",
+    description:
+      "A memory system that lets an AI companion remember each person between conversations, without ever exposing sensitive details to the model.",
+    hook: "Loneliness is a real problem in aged care. This memory system lets an AI companion remember each person between conversations, without ever exposing sensitive details to the model.",
+    features: [
+      {
+        label: "Privacy First",
+        text: "Only a short summary reaches the model. Medication and other sensitive details never do, and conversations are encrypted, access-audited and kept in Sydney.",
+      },
+      {
+        label: "Memories That Are Checked",
+        text: "An LLM on Amazon Bedrock turns each chat into memories, and every one is verified in code against what the person actually said.",
+      },
+      {
+        label: "Carer Input",
+        text: "Carers add what residents can't always tell us themselves, such as family names, routines and topics to avoid, kept separate from the resident's own words.",
+      },
+    ],
+    tech: [
+      "Python",
+      "FastAPI",
+      "Amazon Bedrock",
+      "PostgreSQL",
+      "AWS CDK",
+      "ECS Fargate",
+    ],
+  },
+  {
+    id: "charity-funding-platform",
+    title: "AI-Assisted Charity Funding Platform",
+    flagship: true,
+    attribution: "Shipped at Ladder Inc",
+    description:
+      "A platform connecting private philanthropic funds with small Australian charities.",
+    hook: "Small Australian charities often struggle to get in front of private philanthropic funds. This platform connects the two.",
+    features: [
+      {
+        label: "For Charities",
+        text: "Sign up, tell their story, upload documents and get an AI-driven readiness assessment, then onboarding and a live profile.",
+      },
+      {
+        label: "For Funders",
+        text: "Verify a fund, pick causes, browse charities and pledge gifts.",
+      },
+      {
+        label: "Built To Be Trusted",
+        text: "Money moves by bank transfer through a partner trust, while the platform keeps the ledger, receipts and records behind role-based access, encrypted bank details and an audit log.",
+      },
+    ],
+    tech: [
+      "TypeScript",
+      "Next.js",
+      "PostgreSQL",
+      "Prisma",
+      "AWS CDK",
+      "ECS Fargate",
+    ],
+  },
   {
     id: "vouchpay",
     title: "VouchPay",
@@ -184,19 +253,19 @@ export type Capability = {
 
 export const whatIDo: Capability[] = [
   {
-    title: "Mobile and Full Stack Development",
-    body: "I build and ship mobile and web applications end to end, from the first screen through to production deployment on iOS and Android. I work across React Native, TypeScript, Node.js, and AWS, and I am comfortable moving between frontend and backend depending on what the product needs.",
-    tech: ["React Native", "TypeScript", "Node.js", "Next.js", "AWS EC2"],
+    title: "AI Products",
+    body: "I build practical AI products that go beyond basic API calls, including memory systems, RAG pipelines and assessment workflows. I think carefully about what a model should see, what it should never see, and how its outputs are validated before they reach real users. I use Claude Code daily.",
+    tech: ["Amazon Bedrock", "FastAPI", "LangChain", "ChromaDB", "Ollama"],
   },
   {
-    title: "AI and RAG Systems",
-    body: "I build practical AI systems that go beyond basic API calls, including RAG pipelines, local LLM deployments, and citation-gated knowledge systems. I use Claude Code daily and think carefully about how AI outputs should be validated before they reach real users.",
-    tech: ["LangChain", "ChromaDB", "FastAPI", "Ollama", "Gemini"],
+    title: "Full Stack Development",
+    body: "I build and ship web and mobile applications end to end, from the first screen through to production, including releases on the App Store and Google Play. I move between frontend and backend depending on what the product needs.",
+    tech: ["Next.js", "TypeScript", "React Native", "Node.js", "PostgreSQL"],
   },
   {
-    title: "Cloud Deployment and CI/CD",
-    body: "I deploy and maintain production backends on AWS, configure Nginx and PM2, and set up automated pipelines so releases are consistent and reliable. I have shipped to both the App Store and Google Play through Expo EAS.",
-    tech: ["AWS EC2", "GitHub Actions", "Nginx", "Expo EAS", "CI/CD"],
+    title: "Cloud Infrastructure and Security",
+    body: "I define infrastructure as code, deploy containerised backends on AWS and set up automated pipelines so releases are consistent and reliable. Security is part of the build: encryption, least-privilege access and audit trails from the start.",
+    tech: ["AWS CDK", "ECS Fargate", "KMS", "GitHub Actions", "Docker"],
   },
   {
     title: "Data Engineering and Analysis",
@@ -232,6 +301,9 @@ export const skills: { group: string; items: string[] }[] = [
       "FastAPI",
       "Flask-RESTx",
       "SQL",
+      "PostgreSQL",
+      "Prisma",
+      "SQLAlchemy",
       "MongoDB Atlas",
       "SQLite",
       "Atlassian Forge SDK",
@@ -240,6 +312,7 @@ export const skills: { group: string; items: string[] }[] = [
   {
     group: "AI & Data",
     items: [
+      "Amazon Bedrock",
       "LangChain",
       "ChromaDB",
       "Gemini",
@@ -250,7 +323,21 @@ export const skills: { group: string; items: string[] }[] = [
   },
   {
     group: "Cloud & Tools",
-    items: ["AWS EC2", "Nginx", "PM2", "GitHub Actions", "CI/CD"],
+    items: [
+      "AWS CDK",
+      "ECS Fargate",
+      "RDS",
+      "KMS",
+      "WAF",
+      "Cognito",
+      "AWS EC2",
+      "Docker",
+      "Nginx",
+      "PM2",
+      "GitHub Actions",
+      "CI/CD",
+      "Playwright",
+    ],
   },
 ];
 

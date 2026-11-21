@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { projects, site } from "@/data/content";
+import { projects, site, type Project } from "@/data/content";
 import { Reveal } from "../motion/primitives";
 import Section from "./Section";
 import SpotlightCard from "../SpotlightCard";
@@ -32,115 +32,135 @@ function BriefcaseIcon() {
   );
 }
 
-const flagship = projects.find((p) => p.flagship)!;
+const marquee = projects.filter((p) => p.flagship);
 const rest = projects.filter((p) => !p.flagship);
+
+function MarqueeCard({ p, index }: { p: Project; index: number }) {
+  return (
+    <Reveal className="md:col-span-3" y={36}>
+      <div id={p.id} className="scroll-mt-24">
+        <SpotlightCard tiltStrength={0.6} beamDelay={index * 4.5}>
+          <div
+            className={`grid grid-cols-1 gap-8 p-7 sm:p-10 ${
+              p.stores ? "lg:grid-cols-[1.4fr_1fr]" : ""
+            }`}
+          >
+            <div className="flex flex-col justify-center">
+              <div className="flex flex-wrap items-center gap-3">
+                <h3 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+                  <span className="text-grad">{p.title}</span>
+                </h3>
+                <span className="inline-flex items-center gap-1.5 font-mono text-sm tracking-wide text-ink/80">
+                  <BriefcaseIcon />
+                  {p.attribution}
+                </span>
+              </div>
+              {p.grant && (
+                <div className="mt-4 inline-flex w-fit items-center gap-2 rounded-full border border-acc1/25 bg-acc1/10 px-3.5 py-1.5">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--acc1)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01z" />
+                  </svg>
+                  <span className="text-xs font-medium text-acc1">{p.grant}</span>
+                </div>
+              )}
+              {p.hook && p.features ? (
+                <>
+                  <p className={`mt-5 ${p.stores ? "max-w-xl" : "max-w-3xl"} text-sm leading-relaxed text-mute sm:text-base`}>
+                    {p.hook}
+                  </p>
+                  <div className={`mt-4 flex ${p.stores ? "max-w-xl" : "max-w-3xl"} flex-col gap-3`}>
+                    {p.features.map((f) => (
+                      <p key={f.label} className="text-sm leading-relaxed text-mute sm:text-base">
+                        <span className="font-display font-semibold text-ink">
+                          {f.label}
+                          {" — "}
+                        </span>
+                        {f.text}
+                      </p>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <p className="mt-5 max-w-xl text-sm leading-relaxed text-mute sm:text-base">
+                  {p.description}
+                </p>
+              )}
+              <div className="mt-6 flex flex-wrap gap-2">
+                {p.tech.map((t) => (
+                  <Tag key={t} hue="var(--acc2)" className="px-3 py-1 text-[11px]">
+                    {t}
+                  </Tag>
+                ))}
+              </div>
+              {p.link && (
+                <div className="mt-7">
+                  <a
+                    href={p.link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-acc1 to-acc3 px-5 py-2.5 text-sm font-medium text-bg transition-shadow duration-300 hover:shadow-[0_0_28px_var(--glow)]"
+                  >
+                    {p.link.label} <ExternalIcon />
+                  </a>
+                </div>
+              )}
+              {p.stores && (
+                <div className="mt-5">
+                  <p className="mb-2 font-mono text-[10px] tracking-[0.15em] text-mute/70">
+                    AVAILABLE ON
+                  </p>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <a
+                      href={p.appStoreUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block transition-transform duration-300 hover:scale-105"
+                    >
+                      <Image
+                        src="/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.png"
+                        alt="Download on the App Store"
+                        width={374}
+                        height={125}
+                        className="h-11 w-auto"
+                      />
+                    </a>
+                    <a
+                      href={p.playStoreUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block transition-transform duration-300 hover:scale-105"
+                    >
+                      <Image
+                        src="/GetItOnGooglePlay_Badge_Web_color_English.png"
+                        alt="Get it on Google Play"
+                        width={747}
+                        height={221}
+                        className="h-11 w-auto"
+                      />
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
+            {p.stores && (
+              <div className="flex items-center justify-center py-2">
+                <PhoneMock images={p.images} />
+              </div>
+            )}
+          </div>
+        </SpotlightCard>
+      </div>
+    </Reveal>
+  );
+}
 
 export default function Projects() {
   return (
     <Section id="projects" number="02" title="Projects">
       <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-        <Reveal className="md:col-span-3" y={36}>
-          <div id="vouchpay" className="scroll-mt-24">
-            <SpotlightCard tiltStrength={0.6} beamDelay={0}>
-              <div className="grid grid-cols-1 gap-8 p-7 sm:p-10 lg:grid-cols-[1.4fr_1fr]">
-                <div className="flex flex-col justify-center">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <h3 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-                      <span className="text-grad">{flagship.title}</span>
-                    </h3>
-                    <span className="inline-flex items-center gap-1.5 font-mono text-sm tracking-wide text-ink/80">
-                      <BriefcaseIcon />
-                      {flagship.attribution}
-                    </span>
-                  </div>
-                  <div className="mt-4 inline-flex w-fit items-center gap-2 rounded-full border border-acc1/25 bg-acc1/10 px-3.5 py-1.5">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--acc1)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01z" />
-                    </svg>
-                    <span className="text-xs font-medium text-acc1">{flagship.grant}</span>
-                  </div>
-                  {flagship.hook && flagship.features ? (
-                    <>
-                      <p className="mt-5 max-w-xl text-sm leading-relaxed text-mute sm:text-base">
-                        {flagship.hook}
-                      </p>
-                      <div className="mt-4 flex max-w-xl flex-col gap-3">
-                        {flagship.features.map((f) => (
-                          <p key={f.label} className="text-sm leading-relaxed text-mute sm:text-base">
-                            <span className="font-display font-semibold text-ink">
-                              {f.label}
-                              {" — "}
-                            </span>
-                            {f.text}
-                          </p>
-                        ))}
-                      </div>
-                    </>
-                  ) : (
-                    <p className="mt-5 max-w-xl text-sm leading-relaxed text-mute sm:text-base">
-                      {flagship.description}
-                    </p>
-                  )}
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {flagship.tech.map((t) => (
-                      <Tag key={t} hue="var(--acc2)" className="px-3 py-1 text-[11px]">
-                        {t}
-                      </Tag>
-                    ))}
-                  </div>
-                  <div className="mt-7">
-                    <a
-                      href={flagship.link!.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-acc1 to-acc3 px-5 py-2.5 text-sm font-medium text-bg transition-shadow duration-300 hover:shadow-[0_0_28px_var(--glow)]"
-                    >
-                      {flagship.link!.label} <ExternalIcon />
-                    </a>
-                  </div>
-                  <div className="mt-5">
-                    <p className="mb-2 font-mono text-[10px] tracking-[0.15em] text-mute/70">
-                      AVAILABLE ON
-                    </p>
-                    <div className="flex flex-wrap items-center gap-3">
-                      <a
-                        href={flagship.appStoreUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block transition-transform duration-300 hover:scale-105"
-                      >
-                        <Image
-                          src="/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.png"
-                          alt="Download on the App Store"
-                          width={374}
-                          height={125}
-                          className="h-11 w-auto"
-                        />
-                      </a>
-                      <a
-                        href={flagship.playStoreUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block transition-transform duration-300 hover:scale-105"
-                      >
-                        <Image
-                          src="/GetItOnGooglePlay_Badge_Web_color_English.png"
-                          alt="Get it on Google Play"
-                          width={747}
-                          height={221}
-                          className="h-11 w-auto"
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex items-center justify-center py-2">
-                  <PhoneMock images={flagship.images} />
-                </div>
-              </div>
-            </SpotlightCard>
-          </div>
-        </Reveal>
+        {marquee.map((p, i) => (
+          <MarqueeCard key={p.id} p={p} index={i} />
+        ))}
 
         {rest.map((p, i) => (
           <Reveal key={p.id} delay={i * 0.1} y={36}>
